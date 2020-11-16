@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * jwt工具类
+ */
 @ConfigurationProperties("jwt.configuration")
 @Getter
 @Setter

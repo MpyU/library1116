@@ -3,6 +3,7 @@ package com.library.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.library.pojo.Result;
+import com.library.pojo.ResultCode;
 import com.library.pojo.User;
 import com.library.service.UserService;
 import com.library.utils.JwtUtils;
@@ -34,9 +35,9 @@ public class UserController {
         user.setRegisterDate(new Date());
         int row = userService.save(user);
         if(row > 0){
-            return new Result(200,"注册成功！",row);
+            return new Result(ResultCode.SUCCESS,"注册成功！",row);
         }
-        return new Result(444,"注册失败！");
+        return new Result(ResultCode.FAIL,"注册失败！");
     }
 
     @PostMapping("/login")
@@ -48,9 +49,9 @@ public class UserController {
             redisTemplate.opsForValue().set("token",u, 60,TimeUnit.SECONDS);
             Object token1 = redisTemplate.opsForValue().get("token");
             System.out.println(token1);
-            return new Result(200,"登录成功！",token);
+            return new Result(ResultCode.SUCCESS,"登录成功！",token);
         }else{
-            return new Result(444,"用户名或密码有误！");
+            return new Result(ResultCode.FAIL,"用户名或密码有误！");
         }
 
     }
@@ -60,9 +61,9 @@ public class UserController {
 
         User u = userService.get(user);
         if(u != null){
-            return new Result(200,"查询用户成功！",u);
+            return new Result(ResultCode.SUCCESS,"查询用户成功！",u);
         }
-        return new Result(444,"无此用户！");
+        return new Result(ResultCode.FAIL,"无此用户！");
     }
 
     @GetMapping("/select/{pageSize}/{currentCount}")
@@ -70,18 +71,18 @@ public class UserController {
         ,@PathVariable("currentCount")@RequestParam(defaultValue = "1")Integer currentPage){
         PageInfo<User> pageInfo = userService.selectAll(pageSize,currentPage);
         if(pageInfo.getList().size() > 0){
-            return new Result(200,"查询所有用户成功！",pageInfo);
+            return new Result(ResultCode.SUCCESS,"查询所有用户成功！",pageInfo);
         }
-        return new Result(444,"查询所有用户失败！");
+        return new Result(ResultCode.FAIL,"查询所有用户失败！");
     }
 
     @PutMapping("/update")
     public Result<Integer> update(User user){
         int row = userService.update(user);
         if(row > 0){
-            return new Result(200,"用户信息修改成功！",row);
+            return new Result(ResultCode.SUCCESS,"用户信息修改成功！",row);
         }else{
-            return new Result(444,"用户信息修改失败！");
+            return new Result(ResultCode.FAIL,"用户信息修改失败！");
         }
     }
 
@@ -91,9 +92,9 @@ public class UserController {
     public Result<Integer> delete(@PathVariable("id") Integer id){
         int row = userService.delete(id);
         if(row > 0){
-            return new Result(200,"用户删除成功！",row);
+            return new Result(ResultCode.SUCCESS,"用户删除成功！",row);
         }else{
-            return new Result(444,"用户删除失败！");
+            return new Result(ResultCode.FAIL,"用户删除失败！");
         }
     }
 

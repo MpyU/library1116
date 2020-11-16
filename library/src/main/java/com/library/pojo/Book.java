@@ -18,6 +18,7 @@ public class Book implements Serializable {
      * 	book_name varchar(50) comment "书名",
      * 	cid int comment "类别",
      * 	author varchar(20) comment "作者",
+     * 	cover varchar(100) comment "封面",
      * 	press varchar(50) comment "出版社",
      * 	press_date date comment "出版时间",
      * 	book_desc varchar(250) comment "书的描述",
@@ -37,6 +38,7 @@ public class Book implements Serializable {
     private String bookName;
     private Integer cid;
     private String author;
+    private String cover;
     private String press;
     private Date pressDate;
     private String bookDesc;
@@ -49,5 +51,11 @@ public class Book implements Serializable {
     private Integer monthClickCount;
     private Integer totalClickCount;
     private Date publishDate;
+
+    private Category category;
+
+    public Book(Integer id){
+        this.id = id;
+    }
 
 }

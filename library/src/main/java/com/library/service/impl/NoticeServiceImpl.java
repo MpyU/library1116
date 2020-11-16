@@ -1,5 +1,6 @@
 package com.library.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.library.pojo.Notice;
 import com.library.service.NoticeService;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<Notice> selectAll() {
+    public PageInfo<Notice> selectAll(Integer currentPage,Integer pageSize) {
         return null;
     }
 
