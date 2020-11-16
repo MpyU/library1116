@@ -1,0 +1,78 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.UserDao">
+
+    <!--id int primary key auto_increment comment "ID",
+     * 	username varchar(20) comment "用户名(账户)",
+     * 	password varchar(20) comment "用户密码",
+     * 	telephone varchar(12) comment "联系方式",
+     * 	email varchar(30) comment "邮箱",
+     * 	head_image varchar(100) comment "头像",
+     * 	status int default 0 comment "身份状态0表示普通用户，1表示管理员",
+     * 	register_date date comment "注册时间"-->
+
+    <sql id="baseSql">
+        id,username,password,telephone,email,head_image,status,register_date
+    </sql>
+
+
+    <select id="get" resultType="com.library.pojo.User">
+        select
+        <include refid="baseSql"/>
+        from sys_user
+        <trim prefix="where" suffixOverrides="and">
+            <if test="id != null">
+                id = #{id} and
+            </if>
+            <if test="username != null">
+                username = #{username} and
+            </if>
+            <if test="password != null">
+                password = #{password} and
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone} and
+            </if>
+            <if test="email != null">
+                email = #{email} and
+            </if>
+        </trim>
+    </select>
+
+    <select id="selectAll" resultType="com.library.pojo.User">
+        select
+        <include refid="baseSql"/>
+        from sys_user
+    </select>
+
+    <insert id="save" parameterType="com.library.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        <!--id,username,password,telephone,email,headImage,status,register-->
+        insert into sys_user(username,password,telephone,email,head_image,status,register_date)
+        values (#{username},#{password},#{telephone},#{email},#{headImage},0,#{registerDate})
+    </insert>
+
+    <update id="update" parameterType="com.library.pojo.User">
+        update sys_user
+        <set>
+            <if test="username != null">
+                username = #{username} ,
+            </if>
+            <if test="password != null">
+                password = #{password} ,
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone} ,
+            </if>
+            <if test="email != null">
+                email = #{email}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from sys_user where id = #{id}
+    </delete>
+
+</mapper>
