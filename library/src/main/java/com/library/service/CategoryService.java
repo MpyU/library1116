@@ -13,4 +13,6 @@ public interface CategoryService {
     int save(Category t);
     int update(Category t);
     int delete(Integer id);
+
+    void add(List<Category> list);
 }

@@ -1,0 +1,106 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.CategoryDao">
+
+
+
+    <resultMap id="baseMap" type="com.library.pojo.Category">
+        <id property="id" column="id"/>
+        <result property="categoryName" column="category_name"/>
+        <result property="categoryDesc" column="category_desc"/>
+        <result property="floor" column="floor"/>
+        <result property="parentId" column="parent_id"/>
+    </resultMap>
+
+    <sql id="baseSql">
+        id,category_name,category_desc,floor,parent_id
+    </sql>
+
+    <sql id="baseIf">
+        <trim prefix="where" suffixOverrides="and">
+            <if test="id != null">
+                id = #{id} and
+            </if>
+            <if test="categoryName != null">
+                category_name = #{categoryName} and
+            </if>
+        </trim>
+    </sql>
+
+    <select id="get" resultMap="baseMap">
+        select
+        <include refid="baseSql"/>
+        from category
+        <include refid="baseIf"/>
+    </select>
+
+    <select id="selectAll" resultMap="baseMap">
+        select
+        <include refid="baseSql"/>
+        from category
+    </select>
+
+    <select id="selectAllByCondition" resultMap="baseMap">
+        select
+        <include refid="baseSql"/>
+        from category
+        <include refid="baseIf"/>
+    </select>
+
+    <insert id="save" parameterType="com.library.pojo.Category" useGeneratedKeys="true" keyProperty="id">
+        <!--id,username,password,telephone,email,headImage,status,register-->
+        insert into category(category_name,category_desc,floor,parent_id)
+        values (#{categoryName},#{categoryDesc},#{floor},#{parentId})
+    </insert>
+
+    <insert id="add">
+        insert into category(category_name,category_desc,floor,parent_id)
+        values
+        <foreach collection="list" item="category" separator=",">
+            (#{category.categoryName},#{category.categoryDesc},#{category.floor},#{category.parentId})
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.library.pojo.Category">
+        update book
+        <set>
+            <if test="bookName != null">
+                book_name = #{bookName} ,
+            </if>
+            <if test="bookDesc != null">
+                book_desc = #{bookDesc} ,
+            </if>
+            <if test="bookShelf != null">
+                book_shelf = #{bookShelf} ,
+            </if>
+            <if test="bookFloor != null">
+                book_floor = #{bookFloor}
+            </if>
+            <if test="count != null">
+                count = #{count}
+            </if>
+            <if test="price != null">
+                price = #{price}
+            </if>
+            <if test="isLend != null">
+                is_lend = #{isLend}
+            </if>
+            <if test="dayClickCount != null">
+                day_click_count = #{dayClickCount}
+            </if>
+            <if test="monthClickCount != null">
+                month_click_count = #{monthClickCount}
+            </if>
+            <if test="totalClickCount != null">
+                total_click_count = #{totalClickCount}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.library.pojo.Category">
+        delete from book where id = #{id}
+    </delete>
+
+</mapper>
