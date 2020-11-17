@@ -6,10 +6,14 @@ import com.library.pojo.Book;
 import com.library.pojo.Result;
 import com.library.pojo.ResultCode;
 import com.library.service.BookService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
+@Api(tags = "图书管理接口")
 @RestController
 @RequestMapping("/book")
 public class BookController {
@@ -18,6 +22,14 @@ public class BookController {
     private BookService bookService;
 
 
+    @ApiOperation("根据书的相关信息查询用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "书的ID",required=true),
+            @ApiImplicitParam(name = "bookName", value = "书名",required=true),
+            @ApiImplicitParam(name = "searchId", value = "检索号",required=true),
+            @ApiImplicitParam(name = "cardId", value = "书的编号",required=true),
+            @ApiImplicitParam(name = "author", value = "书的作者",required=true)
+    })
     @GetMapping("/get")
     public Result<Book> get(Book b){
         Book book = bookService.get(b);
