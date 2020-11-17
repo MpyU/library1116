@@ -1,41 +1,45 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.library.dao.UserDao">
+<mapper namespace="com.library.dao.FineDao">
 
-    <!--id int primary key auto_increment comment "ID",
-     * 	username varchar(20) comment "用户名(账户)",
-     * 	password varchar(20) comment "用户密码",
-     * 	telephone varchar(12) comment "联系方式",
-     * 	email varchar(30) comment "邮箱",
-     * 	head_image varchar(100) comment "头像",
-     * 	status int default 0 comment "身份状态0表示普通用户，1表示管理员",
-     * 	register_date date comment "注册时间"-->
+    <!--i id int primary key auto_increment comment "ID",
+     uid int comment "用户ID",
+     price double comment "罚款金额",
+     fine_desc varchar(255) comment "罚款描述即原因",
+     pay_date date comment "付款时间"
+
+    private Integer id;
+    private Integer uid;
+    private Double price;
+    private String fineDesc;
+    private String payDate;
+     -->
 
     <sql id="baseSql">
-        id,username,password,telephone,email,head_image,status,register_date
+        id,uid,price,fine_desc,pay_date
     </sql>
 
 
     <select id="get" resultType="com.library.pojo.User">
         select
         <include refid="baseSql"/>
-        from sys_user
+        from fine
         <trim prefix="where" suffixOverrides="and">
             <if test="id != null">
                 id = #{id} and
             </if>
             <if test="username != null">
-                username = #{username} and
+                uid = #{uid} and
             </if>
             <if test="password != null">
-                password = #{password} and
+                price = #{price} and
             </if>
             <if test="telephone != null">
-                telephone = #{telephone} and
+                fineDesc = #{fineDesc} and
             </if>
             <if test="email != null">
-                email = #{email} and
+                payDate = #{payDate} and
             </if>
         </trim>
     </select>

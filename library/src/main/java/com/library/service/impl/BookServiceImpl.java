@@ -31,8 +31,10 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public PageInfo<Book> selectAll(Integer currentPage,Integer pageSize) {
+        System.out.println(currentPage+"--"+pageSize);
         PageHelper.startPage(currentPage,pageSize);
         List<Book> books = bookDao.selectAll();
+        System.out.println("bookDao:"+bookDao+"  books:"+books);
         PageInfo<Book> pageInfo = new PageInfo<>(books);
         return pageInfo;
     }

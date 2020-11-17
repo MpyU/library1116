@@ -1,5 +1,6 @@
 package com.library.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.library.dao.CategoryDao;
 import com.library.pojo.Category;
@@ -18,16 +19,23 @@ public class CategoryServiceImpl  implements CategoryService {
 
     @Override
     public Category get(Category category) {
-        return null;
+        return categoryDao.get(category);
     }
 
     @Override
     public PageInfo<Category> selectAll(Integer currentPage, Integer pageSize) {
-        return null;
+        PageHelper.startPage(currentPage,pageSize);
+        List<Category> list=categoryDao.selectAll();
+        //导航页码数,如果不传，PageInfo的默认值是8
+        int navigatePages=3;
+        PageInfo<Category> pageInfo=new PageInfo<>(list,navigatePages);
+        System.out.println(pageInfo);
+        return pageInfo;
     }
 
     @Override
     public PageInfo<Category> selectAllByCondition(Integer currentPage, Integer pageSize, Category category) {
+
         return null;
     }
 

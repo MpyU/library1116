@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface UserService {
     User get(User t);
+    User getByPWD(String username,String password);
     PageInfo<User> selectAll(Integer pageSize, Integer currentPage);
     int save(User t);
     int update(User t);

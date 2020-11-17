@@ -29,4 +29,8 @@ public class User implements Serializable {
     private String headImage;
     private Integer status;
     private String registerDate;
+
+    public User(Integer id){
+        this.id = id;
+    }
 }

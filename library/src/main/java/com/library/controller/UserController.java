@@ -33,11 +33,12 @@ public class UserController {
     private JwtUtils jwtUtils;
 
     @PostMapping("/save")
-    public Result<Integer> save(@RequestBody String userStr){
-        Gson gson = new Gson();
-        User user = gson.fromJson(userStr, User.class);
+    public Result<Integer> save(User user){
+//        Gson gson = new Gson();
+//        User user = gson.fromJson(userStr, User.class);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         user.setRegisterDate(simpleDateFormat.format(new Date()));
+        System.out.println(user);
         int row = userService.save(user);
         if(row > 0){
             return new Result(ResultCode.SUCCESS,"注册成功！",row);
@@ -46,15 +47,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result<String> login(String username,String password){
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        User u = userService.get(user);
+    public Result<String> login(@RequestBody String userStr){
+
+        System.out.println(userStr);
+        Gson gson = new Gson();
+        User user = gson.fromJson(userStr, User.class);
+        System.out.println(user);
+        User u = userService.getByPWD(user.getUsername(),user.getPassword());
         System.out.println("------"+u);
         if(u != null){
-            String token = jwtUtils.generateToken(user);
-
+            String token = jwtUtils.generateToken(u);
             redisTemplate.opsForValue().set("token",u, 3600,TimeUnit.SECONDS);
             Object token1 = redisTemplate.opsForValue().get("token");
             System.out.println(token1);
@@ -62,13 +64,11 @@ public class UserController {
         }else{
             return new Result(ResultCode.FAIL,"用户名或密码有误！");
         }
-
     }
 
-    @GetMapping("/get")
-    public Result<User> get(User user){
-
-        User u = userService.get(user);
+    @GetMapping("/get/{id}")
+    public Result<User> get(@PathVariable("id")Integer id){
+        User u = userService.get(new User(id));
         if(u != null){
             return new Result(ResultCode.SUCCESS,"查询用户成功！",u);
         }

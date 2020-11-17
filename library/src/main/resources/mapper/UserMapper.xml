@@ -46,6 +46,15 @@
         from sys_user
     </select>
 
+
+    <select id="getByPWD" resultType="com.library.pojo.User">
+        select
+        <include refid="baseSql"/>
+        from sys_user
+        where password = #{password} and (username = #{username} or telephone = #{username} or email = #{username})
+
+    </select>
+
     <insert id="save" parameterType="com.library.pojo.User" useGeneratedKeys="true" keyProperty="id">
         <!--id,username,password,telephone,email,headImage,status,register-->
         insert into sys_user(username,password,telephone,email,head_image,status,register_date)

@@ -30,9 +30,14 @@ public class CategoryController {
     }
 
     @GetMapping("/select/{pageSize}/{currentPage}")
-    public Result<Category> select(@PathVariable("pageSize")@RequestParam(defaultValue = "5") Integer pageSize,
+    public Result<Category> select(@PathVariable(value="pageSize")Integer pageSize,
                                    @PathVariable("currentPage")Integer currentPage){
-
+//        if(pageSize == null){
+//            pageSize = 5;
+//        }
+        if(currentPage == null){
+            currentPage = 1;
+        }
         PageInfo<Category> pageInfo = categoryService.selectAll(currentPage, pageSize);
         if(pageInfo.getList().size() > 0){
             return new Result(ResultCode.SUCCESS,"查询所有分类信息成功！",pageInfo);

@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getByPWD(String username, String password) {
+        return userDao.getByPWD(username,password);
+    }
+
+    @Override
     public PageInfo<User> selectAll(Integer pageSize, Integer currentPage) {
         PageHelper.startPage(currentPage,pageSize);
         List<User> users = userDao.selectAll();
