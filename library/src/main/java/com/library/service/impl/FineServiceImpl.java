@@ -34,16 +34,16 @@ public class FineServiceImpl implements FineService {
 
     @Override
     public int save(Fine fine) {
-        return 0;
+        return fineDao.save(fine);
     }
 
     @Override
     public int update(Fine fine) {
-        return 0;
+        return fineDao.save(fine);
     }
 
     @Override
     public int delete(Integer id) {
-        return 0;
+        return fineDao.delete(id);
     }
 }

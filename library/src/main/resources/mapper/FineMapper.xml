@@ -21,7 +21,7 @@
     </sql>
 
 
-    <select id="get" resultType="com.library.pojo.User">
+    <select id="get" resultType="com.library.pojo.Fine">
         select
         <include refid="baseSql"/>
         from fine
@@ -32,60 +32,57 @@
             <if test="username != null">
                 uid = #{uid} and
             </if>
-            <if test="password != null">
+            <if test="price != null">
                 price = #{price} and
             </if>
-            <if test="telephone != null">
+            <if test="fineDesc != null">
                 fineDesc = #{fineDesc} and
             </if>
-            <if test="email != null">
+            <if test="payDate != null">
                 payDate = #{payDate} and
             </if>
         </trim>
     </select>
 
-    <select id="selectAll" resultType="com.library.pojo.User">
+    <select id="selectAll" resultType="com.library.pojo.Fine">
         select
         <include refid="baseSql"/>
-        from sys_user
+        from fine
     </select>
 
 
-    <select id="getByPWD" resultType="com.library.pojo.User">
-        select
-        <include refid="baseSql"/>
-        from sys_user
-        where password = #{password} and (username = #{username} or telephone = #{username} or email = #{username})
 
-    </select>
 
-    <insert id="save" parameterType="com.library.pojo.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.library.pojo.Fine" useGeneratedKeys="true" keyProperty="id">
         <!--id,username,password,telephone,email,headImage,status,register-->
-        insert into sys_user(username,password,telephone,email,head_image,status,register_date)
-        values (#{username},#{password},#{telephone},#{email},#{headImage},0,#{registerDate})
+        insert into fine( id,uid,price,fine_desc,pay_date)
+        values (#{id},#{uid},#{price},#{fine_desc},#{pay_date})
     </insert>
 
-    <update id="update" parameterType="com.library.pojo.User">
-        update sys_user
+    <update id="update" parameterType="com.library.pojo.Fine">
+        update fine
         <set>
-            <if test="username != null">
-                username = #{username} ,
+            <if test="id != null">
+                id = #{id} ,
             </if>
-            <if test="password != null">
-                password = #{password} ,
+            <if test="uid != null">
+                uid = #{uid} ,
             </if>
-            <if test="telephone != null">
-                telephone = #{telephone} ,
+            <if test="price != null">
+                price = #{price} ,
             </if>
-            <if test="email != null">
-                email = #{email}
+            <if test="fine_desc != null">
+            fine_desc = #{fine_desc}
+           </if>
+            <if test="pay_date != null">
+                pay_date = #{pay_date}
             </if>
         </set>
         where id = #{id}
     </update>
 
     <delete id="delete" parameterType="int">
-        delete from sys_user where id = #{id}
+        delete from fine where id = #{id}
     </delete>
 
 </mapper>
