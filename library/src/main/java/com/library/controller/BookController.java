@@ -36,12 +36,12 @@ public class BookController {
     @GetMapping("/select/{pageSize}/{currentPage}")
     public Result<PageInfo<Book>> select(@PathVariable("pageSize")Integer pageSize,
            @PathVariable("pageSize")Integer currentPage){
-  if(pageSize==null){
-      pageSize=5;
-  }
-  if(currentPage==null){
-      currentPage=1;
-  }
+          if(pageSize==null){
+              pageSize=5;
+          }
+          if(currentPage==null){
+              currentPage=1;
+          }
         PageInfo<Book> pageInfo = bookService.selectAll(currentPage, pageSize);
         if(pageInfo.getList().size() > 0){
             return new Result(ResultCode.SUCCESS,"查询所有图书信息成功！",pageInfo);
@@ -56,10 +56,15 @@ public class BookController {
      * @return
      */
     @GetMapping("/selectAllByCondition/{pageSize}/{currentPage}")
-    public Result<PageInfo<Book>> selectAllByCondition(@PathVariable("pageSize")@RequestParam(defaultValue = "5")Integer pageSize,
-             @PathVariable("pageSize")@RequestParam(defaultValue = "5")Integer currentPage,
+    public Result<PageInfo<Book>> selectAllByCondition(@PathVariable("pageSize")Integer pageSize,
+             @PathVariable("pageSize")Integer currentPage,
              Book book){
-
+        if(pageSize == null){
+            pageSize = 5;
+        }
+        if(currentPage == null){
+            currentPage = 1;
+        }
         PageInfo<Book> pageInfo = bookService.selectAllByCondition(currentPage, pageSize, book);
         if(pageInfo.getList().size() > 0){
             return new Result(ResultCode.SUCCESS,"查询所有图书信息成功！",pageInfo);

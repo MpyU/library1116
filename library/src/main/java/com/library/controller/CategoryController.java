@@ -32,9 +32,9 @@ public class CategoryController {
     @GetMapping("/select/{pageSize}/{currentPage}")
     public Result<Category> select(@PathVariable(value="pageSize")Integer pageSize,
                                    @PathVariable("currentPage")Integer currentPage){
-//        if(pageSize == null){
-//            pageSize = 5;
-//        }
+        if(pageSize == null){
+            pageSize = 5;
+        }
         if(currentPage == null){
             currentPage = 1;
         }

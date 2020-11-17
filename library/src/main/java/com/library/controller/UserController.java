@@ -76,8 +76,14 @@ public class UserController {
     }
 
     @GetMapping("/select/{pageSize}/{currentCount}")
-    public Result<PageInfo<User>> select(@PathVariable("pageSize")@RequestParam(defaultValue = "5") Integer pageSize
-        ,@PathVariable("currentCount")@RequestParam(defaultValue = "1")Integer currentPage){
+    public Result<PageInfo<User>> select(@PathVariable("pageSize")Integer pageSize
+        ,@PathVariable("currentCount")Integer currentPage){
+        if(pageSize == null){
+            pageSize = 5;
+        }
+        if(currentPage == null){
+            currentPage = 1;
+        }
         PageInfo<User> pageInfo = userService.selectAll(pageSize,currentPage);
         if(pageInfo.getList().size() > 0){
             return new Result(ResultCode.SUCCESS,"查询所有用户成功！",pageInfo);
