@@ -1,0 +1,66 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.UserBookDao">
+
+  <!--
+      id int primary key auto_increment comment "ID",
+     uid int comment "借书用户ID",
+     bid int comment "书ID",
+     status int comment "是否返还，0表示未返还，1表示已返回",
+     lend_date date comment "借阅时间",
+     return_date date comment "返还时间"
+  -->
+
+    <sql id="baseSql">
+        id,uid,bid,status,lend_date,return_date
+    </sql>
+
+    <select id="get" resultType="com.library.pojo.UserBook">
+        select
+        <include refid="baseSql"/>
+        from user_book
+        where id = #{id}
+    </select>
+
+    <select id="getByUidOrBid" resultType="com.library.pojo.UserBook">
+        select
+        <include refid="baseSql"/>
+        from user_book
+        <trim prefix="where" suffixOverrides="and">
+            <if test="uid != null">
+                uid = #{uid} and
+            </if>
+            <if test="bid != null">
+                bid = #{bid}
+            </if>
+        </trim>
+    </select>
+
+
+    <select id="selectAll" resultType="com.library.pojo.UserBook">
+        select
+        <include refid="baseSql"/>
+        from user_book
+    </select>
+
+    <insert id="save" parameterType="com.library.pojo.UserBook" useGeneratedKeys="true" keyProperty="id">
+        insert into user_book(uid,bid,status,lend_date,return_date)
+        values (#{uid},#{bid},0,#{lendDate},null)
+    </insert>
+
+    <update id="update" parameterType="com.library.pojo.UserBook">
+        update user_book
+        <set>
+           status = 1,
+           return_date = #{returnDate}
+        </set>
+        where id = #{id}
+
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user_book where id = #{id}
+    </delete>
+
+</mapper>

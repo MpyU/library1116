@@ -25,4 +25,11 @@ public class UserBook implements Serializable {
     private Integer status;
     private String lendDate;
     private String returnDate;
+
+    private User user;
+    private Book book;
+
+    public UserBook(Integer id){
+        this.id = id;
+    }
 }
