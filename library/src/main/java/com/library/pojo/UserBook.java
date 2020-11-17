@@ -23,6 +23,6 @@ public class UserBook implements Serializable {
     private Integer uid;
     private Integer bid;
     private Integer status;
-    private Date lendDate;
-    private Date returnDate;
+    private String lendDate;
+    private String returnDate;
 }

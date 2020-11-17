@@ -2,6 +2,7 @@ package com.library.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import com.library.pojo.Result;
 import com.library.pojo.ResultCode;
 import com.library.pojo.User;
@@ -12,6 +13,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -31,8 +33,11 @@ public class UserController {
     private JwtUtils jwtUtils;
 
     @PostMapping("/save")
-    public Result<Integer> save(User user){
-        user.setRegisterDate(new Date());
+    public Result<Integer> save(@RequestBody String userStr){
+        Gson gson = new Gson();
+        User user = gson.fromJson(userStr, User.class);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        user.setRegisterDate(simpleDateFormat.format(new Date()));
         int row = userService.save(user);
         if(row > 0){
             return new Result(ResultCode.SUCCESS,"注册成功！",row);
@@ -41,12 +46,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result<String> login(User user){
+    public Result<String> login(String username,String password){
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
         User u = userService.get(user);
+        System.out.println("------"+u);
         if(u != null){
             String token = jwtUtils.generateToken(user);
 
-            redisTemplate.opsForValue().set("token",u, 60,TimeUnit.SECONDS);
+            redisTemplate.opsForValue().set("token",u, 3600,TimeUnit.SECONDS);
             Object token1 = redisTemplate.opsForValue().get("token");
             System.out.println(token1);
             return new Result(ResultCode.SUCCESS,"登录成功！",token);

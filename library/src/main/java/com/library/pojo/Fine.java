@@ -22,5 +22,5 @@ public class Fine implements Serializable {
     private Integer uid;
     private Double price;
     private String fineDesc;
-    private Date payDate;
+    private String payDate;
 }

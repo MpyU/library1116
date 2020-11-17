@@ -40,7 +40,7 @@ public class Book implements Serializable {
     private String author;
     private String cover;
     private String press;
-    private Date pressDate;
+    private String pressDate;
     private String bookDesc;
     private Integer bookShelf;
     private Integer bookFloor;
@@ -50,7 +50,7 @@ public class Book implements Serializable {
     private Integer dayClickCount;
     private Integer monthClickCount;
     private Integer totalClickCount;
-    private Date publishDate;
+    private String publishDate;
 
     private Category category;
 

@@ -28,5 +28,5 @@ public class User implements Serializable {
     private String email;
     private String headImage;
     private Integer status;
-    private Date registerDate;
+    private String registerDate;
 }

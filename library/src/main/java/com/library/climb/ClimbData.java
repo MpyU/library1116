@@ -30,6 +30,7 @@ public class ClimbData {
         List<String> parent = new ArrayList<>();
         List<String> child = new ArrayList<>();
         List<String> child2 = new ArrayList<>();
+        boolean flag = false;
         for(Element element : eles){
             Elements dt = element.select("dt");
             if(dt.html().startsWith("<a")){
@@ -49,16 +50,16 @@ public class ClimbData {
             }
             child.add("-");
         }
-
+        int ii = 0;
         for(Element element:hides){
             Elements els = element.select(".inner_dl");
-            for(Element element2 : els){
-                Elements dd = element2.select("dd");
-                Elements as = dd.select("a");
-                for(Element element3 : as){
-                    child2.add(element3.html());
-                }
-                child2.add("-");
+                for(Element element2 : els){
+                    Elements dd = element2.select("dd");
+                    Elements as = dd.select("a");
+                    for(Element element3 : as){
+                        child2.add(element3.html());
+                    }
+                    child2.add("-");
             }
         }
         int count = 0;
@@ -80,12 +81,13 @@ public class ClimbData {
         int index = 0;
         for(String str : child){
             if(str.equals("-")){
-                System.out.println("-----------------------");
-                System.out.println();
+//                System.out.println("-----------------------");
+//                System.out.println();
                 parentId++;
                 continue;
             }
-            System.out.println(str);
+
+//            System.out.println(str);
 //            Category category = new Category(str,floors.get(parentId-1),parentId);
 //            categories.add(category);
             count++;
@@ -98,8 +100,8 @@ public class ClimbData {
                 parentId2++;
                 continue;
             }
-//                Category category = new Category(str,floors.get(parentId-1),parentId2);
-//                categories.add(category);
+                Category category = new Category(str,floors.get(parentId-1),parentId2);
+                categories.add(category);
         }
 
         return categories;

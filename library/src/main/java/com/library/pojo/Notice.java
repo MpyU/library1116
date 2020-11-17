@@ -20,5 +20,5 @@ public class Notice implements Serializable {
     private Integer id;
     private String message;
     private Integer status;
-    private Date publishDate;
+    private String publishDate;
 }

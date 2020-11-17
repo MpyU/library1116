@@ -23,6 +23,10 @@ public class Category implements Serializable {
     private Integer floor;
     private Integer parentId;
 
+    public Category(Integer id){
+        this.id = id;
+    }
+
     public Category(String categoryName,Integer floor,Integer parentId){
         this.categoryName = categoryName;
         this.floor = floor;

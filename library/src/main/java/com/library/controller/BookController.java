@@ -77,7 +77,7 @@ public class BookController {
         if(row > 0){
             return new Result(ResultCode.SUCCESS,"修改图书信息成功！",row);
         }
-        return new Result(ResultCode.SUCCESS,"修改图书信息失败！");
+        return new Result(ResultCode.FAIL,"修改图书信息失败！");
     }
 
     @DeleteMapping("/delete/{id}")
@@ -86,7 +86,7 @@ public class BookController {
         if(row > 0){
             return new Result(ResultCode.SUCCESS,"删除图书成功！",row);
         }
-        return new Result(ResultCode.SUCCESS,"删除图书失败！");
+        return new Result(ResultCode.FAIL,"删除图书失败！");
     }
 
 }
