@@ -59,7 +59,7 @@ public class FineController {
     public Result<PageInfo<Fine>> selectAllByCondition(@PathVariable("pageSize")Integer pageSize,
              @PathVariable("pageSize")Integer currentPage,
              Fine fine){
-
+System.out.println("pageSize:"+pageSize+" currentPage:"+currentPage+" fine:"+fine);
         PageInfo<Fine> pageInfo = fineService.selectAllByCondition(currentPage, pageSize, fine);
         if(pageInfo.getList().size() > 0){
             return new Result(ResultCode.SUCCESS,"查询所有罚款信息成功！",pageInfo);
@@ -78,6 +78,9 @@ public class FineController {
 
     @PutMapping("/update")
     public Result<Integer> update(Fine fine){
+        if(fine.getId()==null){
+            return new Result(ResultCode.FAIL,"罚款id为null！");
+        }
         int row = fineService.update(fine);
         if(row > 0){
             return new Result(ResultCode.SUCCESS,"修改罚款信息成功！",row);
@@ -87,6 +90,9 @@ public class FineController {
 
     @DeleteMapping("/delete/{id}")
     public Result<Integer> delete(@PathVariable("id")Integer id){
+        if(id==null){
+            return new Result(ResultCode.FAIL,"罚款id为null！");
+        }
         int row =fineService.delete(id);
         if(row > 0){
             return new Result(ResultCode.SUCCESS,"删除罚款成功！",row);

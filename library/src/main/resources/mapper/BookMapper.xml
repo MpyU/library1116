@@ -26,31 +26,25 @@
     <resultMap id="baseMap" type="com.library.pojo.Book">
         <id property="id" column="id"/>
         <result property="cardId" column="card_id"/>
-        <result property="cardId" column="search_id"/>
-        <result property="cardId" column="book_name"/>
-        <result property="cardId" column="cid"/>
-        <result property="cardId" column="author"/>
-        <result property="cardId" column="cover"/>
-        <result property="cardId" column="press_date"/>
-        <result property="cardId" column="book_shelf"/>
-        <result property="cardId" column="book_floor"/>
-        <result property="cardId" column="count"/>
-        <result property="cardId" column="is_lend"/>
-        <result property="cardId" column="day_click_count"/>
-        <result property="cardId" column="month_click_count"/>
-        <result property="cardId" column="total_click_count"/>
-        <result property="cardId" column="publish_date"/>
-        <association property="category">
-            <id property="cid" column="id"/>
-            <result property="categoryName" column="category_name"/>
-            <result property="categoryDesc" column="category_desc"/>
-            <result property="floor" column="floor"/>
-            <result property="parentId" column="parent_id"/>
-        </association>
+        <result property="searchId" column="search_id"/>
+        <result property="bookName" column="book_name"/>
+        <result property="cid" column="cid"/>
+        <result property="author" column="author"/>
+        <result property="cover" column="cover"/>
+        <result property="pressDate" column="press_date"/>
+        <result property="bookShelf" column="book_shelf"/>
+        <result property="bookFloor" column="book_floor"/>
+        <result property="bookCount" column="book_count"/>
+        <result property="isLend" column="is_lend"/>
+        <result property="dayClickCount" column="day_click_count"/>
+        <result property="monthClickCount" column="month_click_count"/>
+        <result property="totalClickCount" column="total_click_count"/>
+        <result property="publishDate" column="publish_date"/>
+
     </resultMap>
 
     <sql id="baseSql">
-        id,card_id,search_id,book_name,cid,author,cover,press,press_date,book_desc,book_shelf,book_floor,count,price,is_lend
+        id,card_id,search_id,book_name,cid,author,cover,press,press_date,book_desc,book_shelf,book_floor,book_count,price,is_lend
         ,day_click_count,month_click_count,total_click_count,publish_date
     </sql>
 
@@ -97,14 +91,15 @@
     <!--id,card_id,search_id,book_name,cid,author,cover,press,press_date,book_desc,book_shelf
     ,book_floor,count,price,is_lend-->
     <!--,day_click_count,month_click_count,total_click_count,publish_date-->
-    <insert id="save" parameterType="com.library.pojo.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.library.pojo.Book" useGeneratedKeys="true" keyProperty="id">
         <!--id,username,password,telephone,email,headImage,status,register-->
-        insert into book(book_name,cid,author,cover,press,press_date,book_desc,book_shelf,book_floor,count,price,is_lend,day_click_count,month_click_count,total_click_count,publish_date)
+        insert into
+        book(book_name,cid,author,cover,press,press_date,book_desc,book_shelf,book_floor,book_count,price,is_lend,day_click_count,month_click_count,total_click_count,publish_date)
         values (#{bookName},#{cid},#{author},#{cover},#{press},#{pressDate},#{bookDesc},#{bookShelf},#{bookFloor}
-              ,#{count},price,1,0,0,0,#{publishDate})
+        ,#{bookCount},price,1,0,0,0,#{publishDate})
     </insert>
 
-    <update id="update" parameterType="com.library.pojo.User">
+    <update id="update" parameterType="com.library.pojo.Book">
         update book
         <set>
             <if test="bookName != null">
@@ -119,8 +114,8 @@
             <if test="bookFloor != null">
                 book_floor = #{bookFloor}
             </if>
-            <if test="count != null">
-                count = #{count}
+            <if test="bookCount != null">
+                book_count = #{bookCount}
             </if>
             <if test="price != null">
                 price = #{price}
@@ -145,4 +140,17 @@
         delete from book where id = #{id}
     </delete>
 
+    <select id="bookNum" resultMap="baseMap">
+     select
+      <include refid="baseSql"/>
+      from book where id= #{id}
+    </select>
+
+
+    <!--int subBook(int book);-->
+<update id="subBook">
+update book
+set book_count=book_count-#{num}
+where id=#{bookId}
+</update>
 </mapper>

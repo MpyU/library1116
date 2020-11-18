@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -21,4 +22,6 @@ public class Notice implements Serializable {
     private String message;
     private Integer status;
     private String publishDate;
+
+    private User user;
 }

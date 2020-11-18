@@ -29,17 +29,17 @@
             <if test="id != null">
                 id = #{id} and
             </if>
-            <if test="username != null">
+            <if test="uid != null">
                 uid = #{uid} and
             </if>
             <if test="price != null">
                 price = #{price} and
             </if>
             <if test="fineDesc != null">
-                fineDesc = #{fineDesc} and
+                fine_desc = #{fineDesc} and
             </if>
             <if test="payDate != null">
-                payDate = #{payDate} and
+                pay_date = #{payDate} and
             </if>
         </trim>
     </select>
@@ -56,26 +56,23 @@
     <insert id="save" parameterType="com.library.pojo.Fine" useGeneratedKeys="true" keyProperty="id">
         <!--id,username,password,telephone,email,headImage,status,register-->
         insert into fine( id,uid,price,fine_desc,pay_date)
-        values (#{id},#{uid},#{price},#{fine_desc},#{pay_date})
+        values (#{id},#{uid},#{price},#{fineDesc},#{payDate})
     </insert>
 
     <update id="update" parameterType="com.library.pojo.Fine">
         update fine
         <set>
-            <if test="id != null">
-                id = #{id} ,
-            </if>
             <if test="uid != null">
                 uid = #{uid} ,
             </if>
             <if test="price != null">
                 price = #{price} ,
             </if>
-            <if test="fine_desc != null">
-            fine_desc = #{fine_desc}
+            <if test="fineDesc != null">
+            fine_desc = #{fineDesc},
            </if>
-            <if test="pay_date != null">
-                pay_date = #{pay_date}
+            <if test="payDate != null">
+                pay_date = #{payDate}
             </if>
         </set>
         where id = #{id}
@@ -84,5 +81,30 @@
     <delete id="delete" parameterType="int">
         delete from fine where id = #{id}
     </delete>
+
+    <select id="selectAllByCondition">
+        select
+        <include refid="baseSql"/>
+        from fine
+        <where>
+
+                <if test="id != null">
+                   or id = #{id}
+                </if>
+                <if test="uid != null">
+                  or  uid = #{uid}
+                </if>
+                <if test="price != null">
+                   or price = #{price}
+                </if>
+                <if test="fineDesc != null">
+                  or  fine_desc like #{fineDesc}
+                </if>
+                <if test="payDate != null">
+                 or   pay_date = #{payDate}
+                </if>
+
+        </where>
+    </select>
 
 </mapper>

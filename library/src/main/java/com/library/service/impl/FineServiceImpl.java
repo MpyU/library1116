@@ -17,6 +17,7 @@ public class FineServiceImpl implements FineService {
 
     @Override
     public Fine get(Fine fine) {
+        setFineDesc(fine);
         return fineDao.get(fine);
     }
 
@@ -29,7 +30,11 @@ public class FineServiceImpl implements FineService {
 
     @Override
     public PageInfo<Fine> selectAllByCondition(Integer currentPage, Integer pageSize, Fine fine) {
-        return null;
+        setFineDesc(fine);
+        PageHelper.startPage(currentPage,pageSize);
+        List<Fine> list=fineDao.selectAllByCondition(fine);
+        PageInfo<Fine> pageInfo=new PageInfo<>(list);
+        return pageInfo;
     }
 
     @Override
@@ -39,9 +44,14 @@ public class FineServiceImpl implements FineService {
 
     @Override
     public int update(Fine fine) {
-        return fineDao.save(fine);
-    }
 
+        return fineDao.update(fine);
+    }
+    private void  setFineDesc(Fine fine){
+        if(fine.getFineDesc()!=null){
+            fine.setFineDesc("%"+fine.getFineDesc()+"%");
+        }
+    }
     @Override
     public int delete(Integer id) {
         return fineDao.delete(id);
