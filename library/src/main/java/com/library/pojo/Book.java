@@ -23,7 +23,7 @@ public class Book implements Serializable {
      * 	press_date date comment "出版时间",
      * 	book_desc varchar(250) comment "书的描述",
      * 	book_shelf int comment "所在书架",
-     * 	book_floor int comment "所在书架哪一层",
+     * 	book_floor int comment "所在楼层",
      * 	count int comment "书的数量" default 0,
      * 	price double comment "书的价格" default 0,
      * 	is_lend int comment "是否可借，0表示不可借，1表示可借" default 0,

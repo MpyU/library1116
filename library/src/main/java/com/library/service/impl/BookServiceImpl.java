@@ -56,6 +56,9 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public int save(Book book) {
+        int cid = book.getCid();
+        Category category = categoryDao.get(new Category(cid));
+        book.setBookFloor(category.getFloor());
         return bookDao.save(book);
     }
 
