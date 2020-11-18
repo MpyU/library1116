@@ -45,14 +45,7 @@ public class CategoryController {
         return new Result(ResultCode.FAIL,"查询所有分类信息失败！");
     }
 
-    @PostMapping("/save")
-    public Result<Integer> save(Category category){
-        int row = categoryService.save(category);
-        if(row > 0){
-            return new Result(ResultCode.SUCCESS,"添加分类成功！",row);
-        }
-        return new Result(ResultCode.SUCCESS,"添加分类失败！");
-    }
+
 
     @PutMapping("/update")
     public Result<Integer> update(Category category){
@@ -81,4 +74,7 @@ public class CategoryController {
 
         return "success";
     }
+
+
+
 }

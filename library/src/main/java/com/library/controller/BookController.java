@@ -20,6 +20,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    CategoryController categoryController;
+
 
     @ApiOperation("根据书的相关信息查询用户")
     @ApiImplicitParams({

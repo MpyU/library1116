@@ -44,6 +44,7 @@ public class UserController {
     private BookService bookService;
 
 
+
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "用户名", defaultValue = "李四",required=true),
             @ApiImplicitParam(name = "password", value = "用户密码", defaultValue = "123", required = true),
@@ -52,7 +53,7 @@ public class UserController {
             @ApiImplicitParam(name = "headImage", value = "头像地址")
     })
     @ApiOperation("添加用户")
-    @PostMapping("/save")
+    @PostMapping("/register")
     public Result<Integer> save(User user){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         user.setRegisterDate(simpleDateFormat.format(new Date()));
@@ -158,10 +159,7 @@ public class UserController {
 // http://10.10.102.163:8001/user/lend/bookId
     @PostMapping("/lend/{bookId}")
     public Result lendBook(@PathVariable("bookId")Integer bookId, HttpServletRequest httpServletRequest){
-        //token命名为Authization
-       String header= httpServletRequest.getHeader("Authization");
-        Claims claims=jwtUtils.parseJwt(header);
-        Map<String,Object> user = (Map<String, Object>) claims.get("user");
+        Map<String,Object> user = mapparseHeaderToUser(httpServletRequest);
        Integer userID=(Integer) user.get("id");
        //用户借书数量是否达到三本
        boolean canLean= userBookService.canLendBook(userID);
@@ -175,14 +173,41 @@ public class UserController {
            map.put("returnDate",new Date());
 
           int num= userBookService.lendBook(map);
+           bookService.subBook(bookId,1);
           if(num>0){
             return new Result<>(ResultCode.SUCCESS,"借书成功");
           }else{
               return new Result<>(ResultCode.SUCCESS,"借书失败");
           }
        }else{
+           if(bookRemain<=0){
+               return new Result<>(ResultCode.SUCCESS,"该书已经借完");
+           }
            return new Result<>(ResultCode.SUCCESS,"借书数量已经达到三本");
        }
 
+    }
+
+    //还书
+    // http://10.10.102.163:8001/user/returnBook/bookId
+    @PutMapping("returnBook/{bookId}")
+    public Result returnBook(@PathVariable("bookId")Integer bookId,HttpServletRequest httpServletRequest){
+        Map<String,Object> user = mapparseHeaderToUser(httpServletRequest);
+        Integer userId=(Integer) user.get("id");
+        int result=userBookService.returnBook(userId,bookId);
+        if(result>0){
+            return new Result(ResultCode.SUCCESS,"还书成功");
+        }else{
+            return new Result(ResultCode.SUCCESS,"还书失败");
+        }
+
+    }
+//从请求中解析出use
+   private Map<String,Object> mapparseHeaderToUser(HttpServletRequest httpServletRequest){
+       //token命名为Authization
+       String header= httpServletRequest.getHeader("Authization");
+       Claims claims=jwtUtils.parseJwt(header);
+       Map<String,Object> user = (Map<String, Object>) claims.get("user");
+       return user;
     }
 }
