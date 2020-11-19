@@ -36,9 +36,15 @@ public class AdminMessageController {
 //    参数：
 //    pageSize：每页显示大小
 //    currentPage：当前页
-    @GetMapping("/message/{pageSize}/{currentPage}")
+    @GetMapping("/{pageSize}/{currentPage}")
     public Result<PageInfo<Notice>> messgae(@PathVariable("pageSize") Integer pageSize, @PathVariable("currentPage")Integer currentPage){
-        return new Result<>(ResultCode.SUCCESS,"查询成功");
+        PageInfo<Notice> pageInfo= noticeService.selectAll(currentPage,pageSize);
+        if(pageInfo.getList().size()>0){
+            return new Result<>(ResultCode.SUCCESS,"查询成功",pageInfo);
+        }else{
+            return new Result<>(ResultCode.FAIL,"查询失败");
+        }
+
     }
     //    消息详情
 //    http://10.10.102.163:8001/admin/message/detail/messageId
@@ -46,8 +52,6 @@ public class AdminMessageController {
 //    bookid：查询的消息的ID
     @GetMapping("/detail/{messageId}")
     public Result<Notice> messageDetail(@PathVariable("messageId")Integer messageId, HttpServletRequest httpServletRequest){
-
-
         Notice notice=noticeService.get(messageId);
         return new Result<>(ResultCode.SUCCESS,"查询成功",notice);
     }

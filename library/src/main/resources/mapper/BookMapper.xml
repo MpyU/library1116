@@ -54,7 +54,7 @@
                 id = #{id} and
             </if>
             <if test="bookName != null">
-                book_name = #{bookName} and
+                book_name like #{bookName} and
             </if>
             <if test="searchId != null">
                 search_id = #{searchId} and

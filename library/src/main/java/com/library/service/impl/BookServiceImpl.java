@@ -31,6 +31,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public PageInfo<Book> selectAllByCondition(Integer currentPage, Integer pageSize, Book book) {
+        if(book.getBookName()!=null){
+            book.setBookName("%"+book.getBookName()+"%");
+        }
         PageHelper.startPage(currentPage, pageSize);
         List<Book> books = bookDao.selectAllByCondition(book);
         for (Book b : books) {
