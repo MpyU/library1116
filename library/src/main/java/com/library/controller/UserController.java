@@ -53,7 +53,7 @@ public class UserController {
             @ApiImplicitParam(name = "headImage", value = "头像地址")
     })
     @ApiOperation("添加用户")
-    @PostMapping("/register")
+    @PostMapping("/save")
     public Result<Integer> save(User user){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         user.setRegisterDate(simpleDateFormat.format(new Date()));

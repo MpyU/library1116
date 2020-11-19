@@ -5,14 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Notice implements Serializable {
-    /**
+
+        /**
      id int primary key auto_increment comment "ID",
      message varchar(255) comment "消息",
      status int comment "为0的话，就表示全发，不为0就发用户",

@@ -40,18 +40,12 @@ public Result<PageInfo<UserBook>> historyByUserId(@PathVariable("userId") Intege
     }
     return new Result<>(ResultCode.FAIL,"查询失败");
 }
-//
-//            按书名模糊查询借阅状态
+
+
+
+//    按书名模糊查询借阅状态
 //    http://10.10.102.163:8001/admin/book/search
 //    参数：表单提交
-
-
-//            按书名模糊查询借阅历史
-//    http://10.10.102.163:8001/admin/history/search/pageSize/currentPage
-//    参数：
-//    bookName：查询的书名（表单提交）
-//    pageSize：每页显示大小
-//    currentPage：当前页
 
     @GetMapping("/admin/history/search/{pageSize}/{currentPage}")
     public Result<PageInfo<UserBook>> historyByUserBookName(@RequestParam("bookName") String bookName, @PathVariable("pageSize")Integer pageSize, @PathVariable("currentPage")Integer currentPage){
