@@ -12,7 +12,7 @@
 
 
     <sql id="baseSql">
-      uid,nid,status
+      id,uid,nid,status
     </sql>
 
     <sql id="baseIf">
@@ -42,7 +42,7 @@
         where uid=#{uid} and status =0
     </select>
 
-    <select id="selectAllByCondition" resultMap="baseMap">
+    <select id="selectAllByCondition" resultType="com.library.pojo.NoticeUser">
         select
         <include refid="baseSql"/>
         from book
@@ -54,8 +54,7 @@
     <!--,day_click_count,month_click_count,total_click_count,publish_date-->
     <insert id="save" parameterType="com.library.pojo.NoticeUser" useGeneratedKeys="true" keyProperty="id">
         <!--id,username,password,telephone,email,headImage,status,register-->
-        insert into
-       <include refid="baseSql"/>
+        insert into notice_user(id,uid,nid,status)
         values (#{id},#{uid},#{nid},#{status})
     </insert>
 

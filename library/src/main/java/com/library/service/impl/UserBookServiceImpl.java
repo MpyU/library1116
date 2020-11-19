@@ -3,9 +3,11 @@ package com.library.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.library.dao.BookDao;
+import com.library.dao.CategoryDao;
 import com.library.dao.UserBookDao;
 import com.library.dao.UserDao;
 import com.library.pojo.Book;
+import com.library.pojo.Category;
 import com.library.pojo.User;
 import com.library.pojo.UserBook;
 import com.library.service.UserBookService;
@@ -30,6 +32,8 @@ public class UserBookServiceImpl implements UserBookService{
 
     @Autowired
     private BookDao bookDao;
+      @Autowired
+    CategoryDao categoryDao;
 
     @Override
     public UserBook get(UserBook userBook) {
@@ -111,6 +115,20 @@ public class UserBookServiceImpl implements UserBookService{
     public PageInfo<UserBook> selectAllByUserId(Integer userId, Integer currentPage, Integer pageSize) {
         PageHelper.startPage(currentPage,pageSize);
         List<UserBook> list=userBookDao.selectAllByUserId(userId);
+        for (UserBook userBook: list) {
+            Integer bookId=userBook.getBid();
+
+            Book book=bookDao.get(new Book(bookId));
+           Integer categoryId= book.getCid();
+           Category category= categoryDao.get(new Category(categoryId));
+            System.err.println("category:"+category);
+           book.setCategory(category);
+            userBook.setBook(book);
+            User user=userDao.get(new User(userId));
+            userBook.setUser(user);
+
+
+        }
         return new PageInfo<>(list);
     }
 

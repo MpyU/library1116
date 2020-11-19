@@ -21,6 +21,7 @@ public class NoticeController {
 
     @GetMapping("/get/{id}")
     public Result<Notice> get(@PathVariable("id")Integer id){
+
         Notice n = noticeService.get(id);
         if(n != null){
             return new Result<>(ResultCode.SUCCESS,"查询消息成功！",n);

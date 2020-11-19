@@ -115,6 +115,13 @@
                     <fork>true</fork>
                     <addResources>true</addResources>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

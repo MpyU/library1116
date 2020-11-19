@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class AdminHistoryController {
     @Autowired
     UserBookService userBookService;
@@ -36,6 +37,7 @@ public class AdminHistoryController {
 public Result<PageInfo<UserBook>> historyByUserId(@PathVariable("userId") Integer userId,@PathVariable("pageSize")Integer pageSize, @PathVariable("currentPage")Integer currentPage){
     PageInfo<UserBook> pageInfo= userBookService.selectAllByUserId(userId,currentPage,pageSize);
     if(pageInfo.getList().size()>0){
+        System.out.println(pageInfo.getList());
         return new Result<>(ResultCode.SUCCESS,"查询成功",pageInfo);
     }
     return new Result<>(ResultCode.FAIL,"查询失败");

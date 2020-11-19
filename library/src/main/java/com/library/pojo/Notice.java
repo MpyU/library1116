@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Notice implements Serializable {
-
+    private static final long serialVersionUID = 1L;
         /**
      id int primary key auto_increment comment "ID",
      message varchar(255) comment "消息",
@@ -21,6 +21,7 @@ public class Notice implements Serializable {
     private String message;
     private Integer status;
     private String publishDate;
+    private Integer uid;
 
     private User user;
 }

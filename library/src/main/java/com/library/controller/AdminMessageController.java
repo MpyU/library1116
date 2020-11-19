@@ -9,6 +9,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 //http://10.10.102.163:8001/admin/message/pageSize/currentPage
 
 /**
@@ -41,10 +43,13 @@ public class AdminMessageController {
     //    消息详情
 //    http://10.10.102.163:8001/admin/message/detail/messageId
 //    参数：
-//    bookid：查询的书的ID
+//    bookid：查询的消息的ID
     @GetMapping("/detail/{messageId}")
-    public Result<Notice> messageDetail(@PathVariable("messageId")Integer messageId){
-        return new Result<>(ResultCode.SUCCESS,"查询成功");
+    public Result<Notice> messageDetail(@PathVariable("messageId")Integer messageId, HttpServletRequest httpServletRequest){
+
+
+        Notice notice=noticeService.get(messageId);
+        return new Result<>(ResultCode.SUCCESS,"查询成功",notice);
     }
 //    发布消息
 //    http://10.10.102.163:8001/admin/message/add
@@ -52,21 +57,25 @@ public class AdminMessageController {
     @PostMapping("/add")
     public Result messageAdd(Notice notice){
         int num=noticeService.save(notice);
-        SendMsg(notice);
+     //   SendMsg(notice);
         if(num>0){
             return new Result<>(ResultCode.SUCCESS,"发布消息成功");
         }
         return new Result<>(ResultCode.SUCCESS,"发布消息失败");
     }
 //    查询用户的消息
-//    http://10.10.102.163:8001/admin/message/list/userid
+//    http://10.10.102.163:8001/admin/message/list/pageSize/currentPage/userid
 //    参数：用户id
+@GetMapping("/list/{pageSize}/{currentPage}/{userid}")
+public Result<PageInfo<Notice>> messageDetail(@PathVariable("currentPage") Integer currentPage,@PathVariable("pageSize")Integer pageSize,@PathVariable("userid")Integer userid, HttpServletRequest httpServletRequest){
+    PageInfo<Notice> pageInfo= noticeService.getByUserId(userid,currentPage,pageSize);
 
-public void SendMsg(Notice notice) {
-        System.out.println("进入发布消息页面");
-//    redisTemplate.convertAndSend(notice);
-    redisTemplate.convertAndSend("","notice_queue",notice);
-    }
+    return new Result<PageInfo<Notice>>(ResultCode.SUCCESS,"查询成功",pageInfo);
+}
+//public void SendMsg(Notice notice) {
+//        System.out.println("进入发布消息页面");
+//    redisTemplate.convertAndSend("","notice_queue",notice);
+//    }
 
 
 

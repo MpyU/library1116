@@ -202,4 +202,14 @@ public class UserController {
        Map<String,Object> user = (Map<String, Object>) claims.get("user");
        return user;
     }
+
+    @DeleteMapping("/delete/{id}")
+    public Result<Integer> delete(@PathVariable("id")Integer id){
+        int result = userService.delete(id);
+        if(result>0){
+            return new Result(ResultCode.SUCCESS,"删除用户成功");
+        }else{
+            return new Result(ResultCode.SUCCESS,"删除用户失败");
+        }
+    }
 }
