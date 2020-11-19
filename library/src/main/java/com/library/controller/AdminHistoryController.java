@@ -6,10 +6,7 @@ import com.library.pojo.ResultCode;
 import com.library.pojo.UserBook;
 import com.library.service.UserBookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AdminHistoryController {
@@ -35,8 +32,8 @@ public class AdminHistoryController {
 //    userId：查询的用户ID
 //    pageSize：每页显示大小
 //    currentPage：当前页
-@RequestMapping("/admin/history/{userId}/{pageSize}/{currentPage}")
-public Result<PageInfo<UserBook>> historyByUserId(@PathVariable("userId") Integer userId,@PathVariable("pageSize")Integer pageSize, @PathVariable("currentPag")Integer currentPage){
+@GetMapping("/admin/history/{userId}/{pageSize}/{currentPage}")
+public Result<PageInfo<UserBook>> historyByUserId(@PathVariable("userId") Integer userId,@PathVariable("pageSize")Integer pageSize, @PathVariable("currentPage")Integer currentPage){
     PageInfo<UserBook> pageInfo= userBookService.selectAllByUserId(userId,currentPage,pageSize);
     if(pageInfo.getList().size()>0){
         return new Result<>(ResultCode.SUCCESS,"查询成功",pageInfo);
@@ -56,9 +53,9 @@ public Result<PageInfo<UserBook>> historyByUserId(@PathVariable("userId") Intege
 //    pageSize：每页显示大小
 //    currentPage：当前页
 
-    @RequestMapping("/admin/history/search/{pageSize}/{currentPage}")
-    public Result<PageInfo<UserBook>> historyByUserBookName(@RequestParam("bookName") String bookName, @PathVariable("pageSize")Integer pageSize, @PathVariable("currentPag")Integer currentPage){
-        PageInfo<UserBook> pageInfo= userBookService.selectAllByUserBookName(bookName,currentPage,pageSize);
+    @GetMapping("/admin/history/search/{pageSize}/{currentPage}")
+    public Result<PageInfo<UserBook>> historyByUserBookName(@RequestParam("bookName") String bookName, @PathVariable("pageSize")Integer pageSize, @PathVariable("currentPage")Integer currentPage){
+        PageInfo<UserBook> pageInfo= userBookService.selectAllByBookName(bookName,currentPage,pageSize);
         if(pageInfo.getList().size()>0){
             return new Result<>(ResultCode.SUCCESS,"查询成功",pageInfo);
         }

@@ -147,15 +147,7 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户ID",required=true)
     })
-    @DeleteMapping("/delete/{id}")
-    public Result<Integer> delete(@PathVariable("id") Integer id){
-        int row = userService.delete(id);
-        if(row > 0){
-            return new Result(ResultCode.SUCCESS,"用户删除成功！",row);
-        }else{
-            return new Result(ResultCode.FAIL,"用户删除失败！");
-        }
-    }
+
 // http://10.10.102.163:8001/user/lend/bookId
     @PostMapping("/lend/{bookId}")
     public Result lendBook(@PathVariable("bookId")Integer bookId, HttpServletRequest httpServletRequest){

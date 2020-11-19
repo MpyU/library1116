@@ -13,7 +13,7 @@
   -->
 
     <sql id="baseSql">
-        id,uid,bid,status,lend_date,return_date
+        user_book.id,user_book.uid,user_book.bid,status,lend_date,return_date
     </sql>
 
     <select id="get" resultType="com.library.pojo.UserBook">
@@ -69,8 +69,38 @@
 
     <!-- public int lendBook(Integer userId,Integer bookId)-->
     <insert id="lendBook">
-     insert into user_book(uid,bid,status,lend_date,return_date)
-values(#{userId},#{bookId},0,#{lendDate},#{returnDate})
+        insert into user_book(uid,bid,status,lend_date,return_date)
+        values(#{userId},#{bookId},0,#{lendDate},#{returnDate})
     </insert>
 
+    <!--
+
+    public int  returnBook(@Param("userId")Integer userId, @Param("bookId")Integer bookId,@Param(returnDate)String returnDate);
+  -->
+    <update id="returnBook">
+        update user_book
+         set status=1,return_date=#{returnDate}
+         where uid=#{userId} and bid=#{bookId} and status=0
+    </update>
+
+    <!--
+    List<UserBook> selectAllByUserId(Integer userId);
+    -->
+    <select id="selectAllByUserId" resultType="com.library.pojo.UserBook">
+        select
+        <include refid="baseSql"/>
+        from user_book
+        where uid=#{uid}
+    </select>
+    <!--
+       List<UserBook> selectAllByBookName(String bookName);
+       -->
+    <select id="selectAllByBookName" resultType="com.library.pojo.UserBook">
+        select
+        <include refid="baseSql"/>
+        from user_book
+        left join book
+        on user_book.bid=book.id
+        where book_name like #{bookName}
+    </select>
 </mapper>

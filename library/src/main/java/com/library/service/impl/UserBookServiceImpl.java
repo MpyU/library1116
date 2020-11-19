@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -95,5 +97,30 @@ public class UserBookServiceImpl implements UserBookService{
     public int lendBook(Map<String,Object> map){
         return userBookDao.lendBook(map);
 
+    }
+
+    @Override
+    public int returnBook(Integer userId, Integer bookId) {
+        String returnDate=null;
+        LocalDateTime localDate=LocalDateTime.now();
+         returnDate= localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
+        return userBookDao.returnBook(userId,bookId,returnDate);
+    }
+
+    @Override
+    public PageInfo<UserBook> selectAllByUserId(Integer userId, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        List<UserBook> list=userBookDao.selectAllByUserId(userId);
+        return new PageInfo<>(list);
+    }
+
+    @Override
+    public PageInfo<UserBook> selectAllByBookName(String bookName, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+
+        bookName="%"+bookName+"%";
+        System.out.println("bookName:"+bookName);
+        List<UserBook> list=userBookDao.selectAllByBookName(bookName);
+        return new PageInfo<>(list);
     }
 }

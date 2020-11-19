@@ -9,4 +9,6 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         
     }
+
+
 }

@@ -15,4 +15,9 @@ public interface BookService {
 
     //减库存
     int subBook(int bookId,int num);
+
+
+    int bookUp(Integer bookId);
+
+    int bookDown(Integer bookId);
 }

@@ -153,4 +153,21 @@ update book
 set book_count=book_count-#{num}
 where id=#{bookId}
 </update>
+
+<!--
+    void bookDown(Integer bookId);
+-->
+    <update id="bookDown">
+        update book
+        set is_lend=0
+        where id=#{id}
+    </update>
+    <!--
+     void bookUp(Integer bookId);
+    -->
+    <update id="bookUp">
+        update book
+        set is_lend=1
+        where id=#{id}
+    </update>
 </mapper>

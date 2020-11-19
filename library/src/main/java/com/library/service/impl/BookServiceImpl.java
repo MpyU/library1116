@@ -15,10 +15,10 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
 
-    @Autowired
+    @Autowired(required = false)
     private BookDao bookDao;
 
-    @Autowired
+    @Autowired(required = false)
     private CategoryDao categoryDao;
 
     @Override
@@ -80,6 +80,16 @@ public class BookServiceImpl implements BookService {
     //减库存
     public int subBook(int bookId, int num) {
         return bookDao.subBook(bookId, num);
+    }
+
+    @Override
+    public int bookUp(Integer bookId) {
+      return   bookDao.bookUp(bookId);
+    }
+
+    @Override
+    public int bookDown(Integer bookId) {
+       return  bookDao.bookDown(bookId);
     }
 
 

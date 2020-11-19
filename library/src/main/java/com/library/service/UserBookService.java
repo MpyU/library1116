@@ -17,4 +17,10 @@ public interface UserBookService {
     public Boolean canLendBook(Integer userId);
 
     public int lendBook(Map<String,Object> map);
+
+    int returnBook(Integer userId, Integer bookId);
+
+    PageInfo<UserBook> selectAllByUserId(Integer userId, Integer currentPage, Integer pageSize);
+
+    PageInfo<UserBook> selectAllByBookName(String bookName, Integer currentPage, Integer pageSize);
 }

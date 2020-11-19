@@ -12,4 +12,9 @@ public interface BookDao extends BaseDao<Book> {
 
     //减库存
     int subBook(@Param("bookId")int bookId,@Param("num")int num);
+
+
+    int bookUp(Integer bookId);
+
+    int bookDown(Integer bookId);
 }
