@@ -58,13 +58,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 			String redisKey = "userJson" + user.get("id");
 			System.out.println("redisKey:" + redisKey);
 			String saveToken = (String) redisTemplate.opsForValue().get(redisKey);
-			if (saveToken == null || saveToken != token) {
+			if (saveToken == null || saveToken.equals(token) == false) {
 				handleRejectMsg("您已经长时间没有操作，请重新登陆!", request, response);
 				return false;
 			}
 			// 客户传入的token匹配redis保存的数据，校验成功：客户已经登陆
 			// 更新key的过期时间,自当前后的一个小时
 			redisTemplate.expire(redisKey, Duration.ofHours(1));
+			// redisTemplate.expire(redisKey, Duration.ofMinutes(1));
 			return true;
 		}
 		return false;
