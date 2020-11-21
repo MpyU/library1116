@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
 
 spring:
   datasource:
@@ -11,7 +11,7 @@ spring:
     password: ba36754794
   redis:
 #    host: 119.29.172.177
-    host: localhost
+    host: 127.0.0.1
     port: 6379
 
 
@@ -30,3 +30,16 @@ jwt:
   configuration:
     secretKey: library-public
     ttl: 1800000
+#  logging.level设置日志级别，后面跟生效的区域，比如root表示整个项目，也可以设置为某个包下，也可以具体到某个类名（日志级别的值不区分大小写）
+#
+#logging.level.root=info就是默认的情况
+#
+#logging.level.root=warn时如下，项目已成功启动，只是没有warn级别的日志而已，如下：  
+logging:
+  level:
+    root: error
+    sql: debug
+    
+    
+  file:
+    name: error.log
