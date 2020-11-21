@@ -1,25 +1,32 @@
 package test;
 
-import org.apache.commons.codec.digest.DigestUtils;
-import org.junit.jupiter.api.Test;
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Text2 {
-    @Test
-public void testMD5()
-{
-    System.out.println("==============MD5================");
-    //2020-11-18 19:12
-    String result = DigestUtils.md5Hex("123"+"2020-11-18 19:15");
-//
+	@org.junit.Test
+	public void testMD5() {
+		System.out.println("==============MD5================");
+		// 2020-11-18 19:12
+		// String result = DigestUtils.md5Hex("123"+"2020-11-18 19:15");
+		//
 
-    System.out.println(result);
+		// System.out.println(result);
 
-    LocalDateTime localDate=LocalDateTime.now();
-    System.out.println("localDate:"+localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm")));
+		// LocalDateTime localDate = LocalDateTime.now();
+		// System.out.println("localDate:" +
+		// localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm")));
 
+		String pdate = "2020-11-21";
+		LocalDateTime date = LocalDateTime.parse(pdate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-}
+	}
+
+	public static void main(String args[]) {
+		String pdate = "2020-11-21 00:00:00";
+		LocalDate localDateTime1 = LocalDate.parse("2019-09-26", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		System.out.println(localDateTime1);
+
+	}
 }

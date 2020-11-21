@@ -1,7 +1,12 @@
 package com.library.dao;
 
-import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.library.pojo.SummaryResult;
 
 public interface SummaryDao {
-    public int summary(String startDay, String endDayte, int status);
+	public List<SummaryResult> summary(@Param("startDate") String startDate, @Param("endDate") String endDate,
+			@Param("status") int status);
 }

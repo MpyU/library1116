@@ -22,12 +22,16 @@
      * 	month_click_count int comment "每月点击量" default 0,
      * 	total_click_count int comment "总点击量" default 0,
      * 	publish_date date comment "上架时间"-->
+<resultMap type="com.library.pojo.SummaryResult" id="baseMap">
+  <result column="bid" property="bookid"/>
+  <result column="total" property="total"/>
+</resultMap>
 
-
-  <select id="sum" resultType="int">
-      select count(*) from user_book
+  <select id="summary" resultMap="baseMap">
+      select count(*) total,bid from user_book
 where (lend_date between '${startDate} 00:00:00' and '${endDate} 23:59:59' and 0=#{status})
 or(lend_date between '${startDate} 00:00:00' and '${endDate} 23:59:59' and 1=#{status})
 or(lend_date between '${startDate} 00:00:00' and '${endDate} 23:59:59' and 2=#{status})
+group by bid
   </select>
 </mapper>
