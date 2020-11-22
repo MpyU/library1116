@@ -65,6 +65,9 @@
             <if test="cardId != null">
                 card_id = #{cardId} and
             </if>
+            <if test=" true">
+                is_lend=1
+            </if>
         </trim>
     </sql>
 
@@ -78,7 +81,8 @@
     <select id="selectAll" resultMap="baseMap">
         select
         <include refid="baseSql"/>
-        from book
+        from book 
+        WHERE is_lend=1
     </select>
 
     <select id="selectAllByCondition" resultMap="baseMap">

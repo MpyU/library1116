@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+    
+ 
+      <!--  <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" p:url="jdbc:mysql://localhost:3306/library?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" p:username="root"  p:password="ba36754794" p:driverClassName="org.gjt.mm.mysql.Driver">
+         </bean> -->
+	
+    
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager" depends-on="dataSource">
+		<property name="dataSource" ref="dataSource" ></property>
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="query*" propagation="SUPPORTS" read-only="true"></tx:method>
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true"></tx:method>
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true"></tx:method>
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"></tx:method>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+	<!--切面表达式写法： https://blog.csdn.net/XU906722/article/details/89049109 -->
+		<aop:pointcut id="allManagerMethod" expression="@target(org.springframework.stereotype.Service)" />
+		
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" order="0"  />
+	</aop:config>
+</beans>

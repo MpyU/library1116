@@ -14,6 +14,7 @@ public class ExceptionAdviceHandler {
 	@ExceptionHandler(value = { java.lang.Exception.class })
 	public Result<String> handlerException(Exception ex) {
 		System.err.println("全局异常处理");
+		ex.printStackTrace();
 		return new Result<>(ResultCode.FAIL, "出现异常了,请联系管理员", ex.getMessage());
 
 	}

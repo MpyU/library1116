@@ -1,6 +1,6 @@
 package test;
 
-import java.time.LocalDate;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -24,9 +24,14 @@ public class Text2 {
 	}
 
 	public static void main(String args[]) {
-		String pdate = "2020-11-21 00:00:00";
-		LocalDate localDateTime1 = LocalDate.parse("2019-09-26", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		System.out.println(localDateTime1);
+		// String pdate = "2020-11-21 00:00:00";
+		// LocalDate localDateTime1 = LocalDate.parse("2019-09-26",
+		// DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		// System.out.println(localDateTime1);
 
+		// System.out.println(new DateTimeFormatter("yyyy-MM-dd
+		// hh:mm:ss").format(Duration.of(20, TimeUnit.HOURS)));
+		// DurationFormatUtils.formatDuration(intervalTime, "dd天");
+		System.out.println(Duration.ofHours(1));
 	}
 }

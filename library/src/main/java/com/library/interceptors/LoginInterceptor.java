@@ -19,7 +19,6 @@ import com.library.pojo.ResultCode;
 import com.library.utils.JwtUtils;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.MalformedJwtException;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
@@ -44,12 +43,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 		Claims claims = null;
 		try {
 			claims = jwtUtils.parseJwt(token);
-		} catch (MalformedJwtException e) {
-			handleRejectMsg("您的token认证有误!", request, response);
-			e.printStackTrace();
-			return false;
 		} catch (Exception e) {
-			handleRejectMsg("Inteceptor出现错误，请联系管理员!", request, response);
+			handleRejectMsg("您的token认证有误,请重新登陆!" + e.getMessage(), request, response);
+			e.printStackTrace();
 			return false;
 		}
 		Map<String, Object> user = (Map<String, Object>) claims.get("user");
