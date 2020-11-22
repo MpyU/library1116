@@ -33,7 +33,7 @@ public class BookController {
 	@Autowired
 	CategoryController categoryController;
 
-	@ApiOperation("根据书的相关信息查询用户")
+	@ApiOperation("根据书的id书籍详情")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "id", value = "书的ID"),
 			@ApiImplicitParam(name = "bookName", value = "书名"), @ApiImplicitParam(name = "searchId", value = "检索号"),
 			@ApiImplicitParam(name = "cardId", value = "书的编号"), @ApiImplicitParam(name = "author", value = "书的作者") })

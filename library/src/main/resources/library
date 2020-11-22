@@ -1,0 +1,156 @@
+/*
+SQLyog v10.2 
+MySQL - 5.6.23 : Database - library
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`library` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `library`;
+
+/*Table structure for table `book` */
+
+DROP TABLE IF EXISTS `book`;
+
+CREATE TABLE `book` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `card_id` varchar(20) DEFAULT NULL COMMENT '图书编号',
+  `search_id` varchar(30) DEFAULT NULL COMMENT '检索号',
+  `book_name` varchar(50) DEFAULT NULL COMMENT '书名',
+  `cid` int(11) DEFAULT NULL COMMENT '类别',
+  `author` varchar(20) DEFAULT NULL COMMENT '作者',
+  `cover` varchar(100) DEFAULT NULL COMMENT '封面',
+  `press` varchar(50) DEFAULT NULL COMMENT '出版社',
+  `press_date` date DEFAULT NULL COMMENT '出版时间',
+  `book_desc` varchar(250) DEFAULT NULL COMMENT '书的描述',
+  `book_shelf` int(11) DEFAULT NULL COMMENT '所在书架',
+  `book_floor` int(11) unsigned zerofill DEFAULT NULL COMMENT '所在楼层',
+  `book_count` int(11) DEFAULT '0' COMMENT '书的数量',
+  `price` double DEFAULT '0' COMMENT '书的价格',
+  `is_lend` int(11) DEFAULT '0' COMMENT '是否可借，0表示不可借，1表示可借',
+  `day_click_count` int(11) DEFAULT '0' COMMENT '每日点击量',
+  `month_click_count` int(11) DEFAULT '0' COMMENT '每月点击量',
+  `total_click_count` int(11) DEFAULT '0' COMMENT '总点击量',
+  `publish_date` date DEFAULT NULL COMMENT '上架时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+/*Data for the table `book` */
+
+insert  into `book`(`id`,`card_id`,`search_id`,`book_name`,`cid`,`author`,`cover`,`press`,`press_date`,`book_desc`,`book_shelf`,`book_floor`,`book_count`,`price`,`is_lend`,`day_click_count`,`month_click_count`,`total_click_count`,`publish_date`) values (1,'1','1','安徒生童话',2,'安徒生',NULL,NULL,NULL,NULL,NULL,NULL,0,0,1,0,0,0,NULL),(2,'2','2','生活故事',-1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,1,0,0,0,NULL),(3,'3','2','生产故事',-1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,1,0,0,0,NULL),(6,'3','2','按',-1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,0,NULL),(17,NULL,NULL,'球状闪电',NULL,'刘慈欣',NULL,'四川科学技术出版社',NULL,'一个历经球状闪电的男主角对其历尽艰辛的研究历程...',23,00000000004,3,0,1,0,0,0,NULL),(18,NULL,NULL,'球状闪电',NULL,'刘慈欣',NULL,'四川科学技术出版社',NULL,'一个历经球状闪电的男主角对其历尽艰辛的研究历程...',23,00000000004,3,0,1,0,0,0,NULL),(19,NULL,NULL,'饼状闪电',NULL,'王慈欣',NULL,'四川科学技术出版社',NULL,'一个历经球状闪电的男主角对其历尽艰辛的研究历程...',23,00000000004,3,0,1,0,0,0,NULL),(20,NULL,NULL,'七二万人撒',NULL,'未确认',NULL,'双方的告诉对方',NULL,'犬瘟热犬瘟热请问是大发生',23,00000000004,3,0,1,0,0,0,NULL);
+
+/*Table structure for table `category` */
+
+DROP TABLE IF EXISTS `category`;
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `category_name` varchar(20) DEFAULT NULL COMMENT '类别名称',
+  `category_desc` varchar(255) DEFAULT NULL COMMENT '类别详情',
+  `floor` int(11) DEFAULT NULL COMMENT '该类别所在楼层',
+  `parent_id` int(11) DEFAULT NULL COMMENT '父类别ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+/*Data for the table `category` */
+
+insert  into `category`(`id`,`category_name`,`category_desc`,`floor`,`parent_id`) values (-1,'未分类','未分类图书',NULL,NULL);
+
+/*Table structure for table `fine` */
+
+DROP TABLE IF EXISTS `fine`;
+
+CREATE TABLE `fine` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `uid` int(11) DEFAULT NULL COMMENT '用户ID',
+  `price` double DEFAULT NULL COMMENT '罚款金额',
+  `fine_desc` varchar(255) DEFAULT NULL COMMENT '罚款描述即原因',
+  `pay_date` date DEFAULT NULL COMMENT '付款时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `fine` */
+
+/*Table structure for table `notice` */
+
+DROP TABLE IF EXISTS `notice`;
+
+CREATE TABLE `notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `message` varchar(255) DEFAULT NULL COMMENT '消息',
+  `status` int(11) DEFAULT NULL COMMENT '是否已经读',
+  `publish_date` date DEFAULT NULL COMMENT '发布消息时间',
+  `uid` int(11) DEFAULT NULL COMMENT '发送到用户的id，代表发送消息到该id的用户，0发送到为所有用户',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+/*Data for the table `notice` */
+
+insert  into `notice`(`id`,`message`,`status`,`publish_date`,`uid`) values (1,'今天图书馆开馆',0,'2020-11-22',1),(2,'每天图书馆闭馆',0,'2020-11-22',NULL),(3,'请xx同学尽快还书',1,'2020-11-22',1),(4,'xx同学已经借阅了安徒生童话',1,'2020-12-05',1),(5,'xx',2,NULL,NULL),(6,'1',NULL,NULL,NULL),(7,'13333eddf',NULL,NULL,NULL),(8,'13333eddf',NULL,NULL,NULL),(9,'13333eddf',0,NULL,1),(10,'13333eddf',0,NULL,1),(11,'13333eddf',0,NULL,1),(12,'13333eddf',0,'2020-11-22',1);
+
+/*Table structure for table `notice_user` */
+
+DROP TABLE IF EXISTS `notice_user`;
+
+CREATE TABLE `notice_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `nid` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL COMMENT ' 代表未读，1代表已经读',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+
+/*Data for the table `notice_user` */
+
+insert  into `notice_user`(`id`,`uid`,`nid`,`status`) values (1,1,9,0),(2,2,9,0),(3,3,9,0),(4,5,9,0),(5,6,9,0),(6,7,9,0),(7,8,9,0),(8,1,10,0),(9,2,10,0),(10,3,10,0),(11,5,10,0),(12,6,10,0),(13,7,10,0),(14,8,10,0),(15,1,11,0),(16,2,11,0),(17,3,11,0),(18,5,11,0),(19,6,11,0),(20,7,11,0),(21,8,11,0),(22,1,12,0),(23,2,12,0),(24,3,12,0),(25,5,12,0),(26,6,12,0),(27,7,12,0),(28,8,12,0);
+
+/*Table structure for table `sys_user` */
+
+DROP TABLE IF EXISTS `sys_user`;
+
+CREATE TABLE `sys_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `username` varchar(20) DEFAULT NULL COMMENT '用户名(账户)',
+  `password` varchar(200) DEFAULT NULL COMMENT '用户密码',
+  `telephone` varchar(12) DEFAULT NULL COMMENT '联系方式',
+  `email` varchar(30) DEFAULT NULL COMMENT '邮箱',
+  `head_image` varchar(100) DEFAULT NULL COMMENT '头像',
+  `status` int(11) DEFAULT '0' COMMENT '身份状态---0表示普通用户，1表示管理员',
+  `register_date` date DEFAULT NULL COMMENT '注册时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user` */
+
+insert  into `sys_user`(`id`,`username`,`password`,`telephone`,`email`,`head_image`,`status`,`register_date`) values (1,'dmc','9d5020b8648ae69d52057efd37eca598','11111111111','a@q.qdaa',NULL,0,'2020-11-21'),(2,'dmc2','9d5020b8648ae69d52057efd37eca598','11111111111','a@q.q',NULL,0,'2020-11-21'),(3,'chen','698d51a19d8a121ce581499d7b701668',NULL,NULL,NULL,0,'2020-11-21'),(5,'','d41d8cd98f00b204e9800998ecf8427e','','',NULL,0,'2020-11-22'),(6,'','d41d8cd98f00b204e9800998ecf8427e','','',NULL,0,'2020-11-22'),(7,'a','d41d8cd98f00b204e9800998ecf8427e','','',NULL,0,'2020-11-22'),(8,'','d41d8cd98f00b204e9800998ecf8427e','','',NULL,0,'2020-11-22');
+
+/*Table structure for table `user_book` */
+
+DROP TABLE IF EXISTS `user_book`;
+
+CREATE TABLE `user_book` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `uid` int(11) DEFAULT NULL COMMENT '借书用户ID',
+  `bid` int(11) DEFAULT NULL COMMENT '书ID',
+  `status` int(11) DEFAULT NULL COMMENT '是否返还，0表示未返还，1表示已返回',
+  `lend_date` date DEFAULT NULL COMMENT '借阅时间',
+  `return_date` date DEFAULT NULL COMMENT '返还时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+/*Data for the table `user_book` */
+
+insert  into `user_book`(`id`,`uid`,`bid`,`status`,`lend_date`,`return_date`) values (1,2,1,1,'2020-11-21',NULL),(2,2,3,0,'2020-11-01',NULL),(3,3,1,0,'2021-11-01',NULL),(4,3,6,0,'2021-01-02',NULL),(5,4,1,1,'2020-01-21',NULL);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

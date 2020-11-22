@@ -78,7 +78,7 @@ public class BookServiceImpl implements BookService {
 			book.setBookFloor(category.getFloor());
 		}
 		int result = bookDao.save(book);
-		int i = 10 / 0;
+		// int i = 10 / 0;
 		return result;
 	}
 
