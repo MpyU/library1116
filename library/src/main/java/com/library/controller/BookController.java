@@ -58,13 +58,14 @@ public class BookController {
 			@ApiImplicitParam(name = "currentPage", value = "当前页", required = true) })
 	@GetMapping("/select/{pageSize}/{currentPage}")
 	public Result<PageInfo<Book>> select(@PathVariable("pageSize") Integer pageSize,
-			@PathVariable("pageSize") Integer currentPage) {
+			@PathVariable("currentPage") Integer currentPage) {
 		if (pageSize == null) {
 			pageSize = 5;
 		}
 		if (currentPage == null) {
 			currentPage = 1;
 		}
+		System.out.println("pageSize:" + pageSize + " pageSize:" + pageSize);
 		PageInfo<Book> pageInfo = bookService.selectAll(currentPage, pageSize);
 		if (pageInfo.getList().size() > 0) {
 			return new Result(ResultCode.SUCCESS, "查询所有图书信息成功！", pageInfo);

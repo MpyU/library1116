@@ -40,8 +40,11 @@ public class BookServiceImpl implements BookService {
 		PageHelper.startPage(currentPage, pageSize);
 		List<Book> books = bookDao.selectAllByCondition(book);
 		for (Book b : books) {
-			Category category = categoryDao.get(new Category(b.getCid()));
-			b.setCategory(category);
+			if (b.getCid() != null) {
+				Category category = categoryDao.get(new Category(b.getCid()));
+				b.setCategory(category);
+			}
+
 		}
 		PageInfo<Book> pageInfo = new PageInfo<>(books);
 		return pageInfo;
@@ -54,9 +57,14 @@ public class BookServiceImpl implements BookService {
 		PageHelper.startPage(currentPage, pageSize);
 		List<Book> books = bookDao.selectAll();
 		for (Book b : books) {
-			Category category = categoryDao.get(new Category(b.getCid()));
-			b.setCategory(category);
+
+			if (b.getCid() != null) {
+				Category category = categoryDao.get(new Category(b.getCid()));
+				b.setCategory(category);
+			}
+
 		}
+
 		PageInfo<Book> pageInfo = new PageInfo<>(books);
 		return pageInfo;
 	}

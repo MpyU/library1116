@@ -24,10 +24,10 @@ public class AdminHistoryController {
 	// 参数：
 	// pageSize：每页显示大小
 	// currentPage：当前页
-	@RequestMapping("/admin/history/select/{pageSize}/{currentPag}")
+	@RequestMapping("/admin/history/select/{pageSize}/{currentPage}")
 	public Result<PageInfo<UserBook>> history(@PathVariable("pageSize") Integer pageSize,
-			@PathVariable("currentPag") Integer currentPag) {
-		PageInfo<UserBook> pageInfo = userBookService.selectAll(currentPag, pageSize);
+			@PathVariable("currentPage") Integer currentPage) {
+		PageInfo<UserBook> pageInfo = userBookService.selectAll(currentPage, pageSize);
 		if (pageInfo.getList().size() > 0) {
 			return new Result<>(ResultCode.SUCCESS, "查询成功", pageInfo);
 		}
@@ -65,4 +65,17 @@ public class AdminHistoryController {
 		}
 		return new Result<>(ResultCode.FAIL, "查询失败");
 	}
+
+	// GetMapping("http://100.2.201.23:8001/admin/history/noreturn/{pageSize}/{currentPage}")
+	@GetMapping("/admin/history/noreturn/{pageSize}/{currentPage}")
+	public Result<PageInfo<UserBook>> historyNoReturn(@PathVariable("pageSize") Integer pageSize,
+			@PathVariable("currentPage") Integer currentPage) {
+		PageInfo<UserBook> pageInfo = userBookService.selectAllNoReturn(currentPage, pageSize);
+		if (pageInfo.getList().size() > 0) {
+			return new Result<>(ResultCode.SUCCESS, "查询成功", pageInfo);
+		}
+		return new Result<>(ResultCode.FAIL, "查询失败");
+
+	}
+
 }

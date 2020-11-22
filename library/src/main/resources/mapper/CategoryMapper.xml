@@ -22,8 +22,18 @@
             <if test="id != null">
                 id = #{id} and
             </if>
+          
             <if test="categoryName != null">
-                category_name = #{categoryName}
+                category_name like #{categoryName}
+            </if>
+              <if test="categoryDesc != null">
+                category_desc = #{categoryDesc}
+            </if>
+              <if test="floor != null">
+                floor = #{floor}
+            </if>
+               <if test="parentId != null">
+                parent_id = #{parentId}
             </if>
         </trim>
     </sql>
@@ -47,6 +57,28 @@
         from category
         <include refid="baseIf"/>
     </select>
+
+      <update id="update" parameterType="com.library.pojo.Category">
+        update category
+        <set>
+            <if test="categoryName != null">
+                category_name = #{categoryName} ,
+            </if>
+            <if test="categoryDesc != null">
+                category_desc = #{categoryDesc} ,
+            </if>
+            <if test="floor != null">
+                floor = #{floor},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+  <delete id="delete" parameterType="com.library.pojo.Category">
+        delete from category where id = #{id} and id!=-1
+    </delete>
 
     <!--<insert id="save" parameterType="com.library.pojo.Category" useGeneratedKeys="true" keyProperty="id">-->
         <!--&lt;!&ndash;id,username,password,telephone,email,headImage,status,register&ndash;&gt;-->

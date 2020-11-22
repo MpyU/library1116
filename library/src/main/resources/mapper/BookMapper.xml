@@ -56,6 +56,9 @@
             <if test="bookName != null">
                 book_name like #{bookName} and
             </if>
+             <if test="cid != null">
+                cid like #{cid} and
+            </if>
             <if test="searchId != null">
                 search_id = #{searchId} and
             </if>
@@ -106,7 +109,11 @@
     <update id="update" parameterType="com.library.pojo.Book">
         update book
         <set>
-            <if test="bookName != null">
+            <if test="cid != null">
+                cid = #{cid} ,
+            </if>
+            
+              <if test="bookName != null">
                 book_name = #{bookName} ,
             </if>
             <if test="bookDesc != null">
@@ -116,25 +123,25 @@
                 book_shelf = #{bookShelf} ,
             </if>
             <if test="bookFloor != null">
-                book_floor = #{bookFloor}
+                book_floor = #{bookFloor},
             </if>
             <if test="bookCount != null">
-                book_count = #{bookCount}
+                book_count = #{bookCount},
             </if>
             <if test="price != null">
-                price = #{price}
+                price = #{price},
             </if>
             <if test="isLend != null">
-                is_lend = #{isLend}
+                is_lend = #{isLend},
             </if>
             <if test="dayClickCount != null">
-                day_click_count = #{dayClickCount}
+                day_click_count = #{dayClickCount},
             </if>
             <if test="monthClickCount != null">
-                month_click_count = #{monthClickCount}
+                month_click_count = #{monthClickCount},
             </if>
             <if test="totalClickCount != null">
-                total_click_count = #{totalClickCount}
+                total_click_count = #{totalClickCount},
             </if>
         </set>
         where id = #{id}
