@@ -1,21 +1,26 @@
 package com.library.dao;
 
-import com.library.pojo.UserBook;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.library.pojo.UserBook;
+
 public interface UserBookDao extends BaseDao<UserBook> {
 
-    List<UserBook> getByUidOrBid(UserBook userBook);
-    public List<UserBook> hasLendBooks(Integer userId);
+	List<UserBook> getByUidOrBid(UserBook userBook);
 
-    public Integer lendBook(Map<String,Object> map);
+	public List<UserBook> hasLendBooks(Integer userId);
 
-    public int  returnBook(@Param("userId")Integer userId, @Param("bookId")Integer bookId,@Param("returnDate")String returnDate);
+	public Integer lendBook(Map<String, Object> map);
 
-    List<UserBook> selectAllByUserId(Integer userId);
+	public int returnBook(@Param("userId") Integer userId, @Param("bookId") Integer bookId,
+			@Param("returnDate") String returnDate);
 
-    List<UserBook> selectAllByBookName(String bookName);
+	List<UserBook> selectAllByUserId(Integer userId);
+
+	List<UserBook> selectAllByBookName(String bookName);
+
+	List<UserBook> selectAllNoReturn();
 }

@@ -35,15 +35,15 @@
     </select>
 
     <insert id="save" parameterType="com.library.pojo.Notice" useGeneratedKeys="true" keyProperty="id">
-        insert into notice(message,status,publish_date)
-        values (#{message},#{status},#{publishDate})
+        insert into notice(message,status,publish_date,uid)
+        values (#{message},#{status},#{publishDate},#{uid})
     </insert>
 
     <update id="update" parameterType="com.library.pojo.Notice">
         update notice
         <set>
-            <if test="id != null">
-                id = #{id},
+            <if test="uid != null">
+                uid = #{uid},
             </if>
             <if test="message != null">
                 message = #{message},
@@ -61,7 +61,7 @@
     <delete id="delete" parameterType="int">
         delete from notice where id = #{id}
     </delete>
-
+<!-- 管理员查询用户的消息（包括单独发送给该用户的消息+公有消息） -->
     <select id="getNoticeByUserId" resultType="com.library.pojo.Notice">
         select
         <include refid="baseSql"/>

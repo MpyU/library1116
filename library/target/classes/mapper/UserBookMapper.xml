@@ -103,4 +103,11 @@
         on user_book.bid=book.id
         where book_name like #{bookName}
     </select>
+    
+     <select id="selectAllNoReturn" resultType="com.library.pojo.UserBook">
+        select
+        <include refid="baseSql"/>
+        from user_book
+        where status=0
+    </select>
 </mapper>

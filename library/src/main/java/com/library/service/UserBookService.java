@@ -1,26 +1,32 @@
 package com.library.service;
 
+import java.util.Map;
+
 import com.github.pagehelper.PageInfo;
 import com.library.pojo.UserBook;
 
-import java.util.Map;
-
 public interface UserBookService {
-    UserBook get(UserBook t);
-    PageInfo<UserBook> selectAll(Integer currentPage,Integer pageSize);
-    int save(UserBook t);
-    int update(UserBook t);
-    int delete(Integer id);
+	UserBook get(UserBook t);
 
-    PageInfo<UserBook> getByUidOrBid(Integer currentPage, Integer pageSize, UserBook userBook);
+	PageInfo<UserBook> selectAll(Integer currentPage, Integer pageSize);
 
-    public Boolean canLendBook(Integer userId);
+	int save(UserBook t);
 
-    public int lendBook(Map<String,Object> map);
+	int update(UserBook t);
 
-    int returnBook(Integer userId, Integer bookId);
+	int delete(Integer id);
 
-    PageInfo<UserBook> selectAllByUserId(Integer userId, Integer currentPage, Integer pageSize);
+	PageInfo<UserBook> getByUidOrBid(Integer currentPage, Integer pageSize, UserBook userBook);
 
-    PageInfo<UserBook> selectAllByBookName(String bookName, Integer currentPage, Integer pageSize);
+	public Boolean canLendBook(Integer userId);
+
+	public int lendBook(Map<String, Object> map);
+
+	int returnBook(Integer userId, Integer bookId);
+
+	PageInfo<UserBook> selectAllByUserId(Integer userId, Integer currentPage, Integer pageSize);
+
+	PageInfo<UserBook> selectAllByBookName(String bookName, Integer currentPage, Integer pageSize);
+
+	PageInfo<UserBook> selectAllNoReturn(Integer currentPage, Integer pageSize);
 }
