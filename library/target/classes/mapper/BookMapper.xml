@@ -1,0 +1,173 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.BookDao">
+
+    <!--  *
+        id int primary key auto_increment comment "ID",
+     * 	card_id varchar(20) comment "图书编号",
+     * 	search_id varchar(30) comment "检索号",
+     * 	book_name varchar(50) comment "书名",
+     * 	cid int comment "类别",
+     * 	author varchar(20) comment "作者",
+     * 	press varchar(50) comment "出版社",
+     * 	press_date date comment "出版时间",
+     * 	book_desc varchar(250) comment "书的描述",
+     * 	book_shelf int comment "所在书架",
+     * 	book_floor int comment "所在书架哪一层",
+     * 	count int comment "书的数量" default 0,
+     * 	price double comment "书的价格" default 0,
+     * 	is_lend int comment "是否可借，0表示不可借，1表示可借" default 0,
+     * 	day_click_count int comment "每日点击量" default 0,
+     * 	month_click_count int comment "每月点击量" default 0,
+     * 	total_click_count int comment "总点击量" default 0,
+     * 	publish_date date comment "上架时间"-->
+
+    <resultMap id="baseMap" type="com.library.pojo.Book">
+        <id property="id" column="id"/>
+        <result property="cardId" column="card_id"/>
+        <result property="searchId" column="search_id"/>
+        <result property="bookName" column="book_name"/>
+        <result property="cid" column="cid"/>
+        <result property="author" column="author"/>
+        <result property="cover" column="cover"/>
+        <result property="pressDate" column="press_date"/>
+        <result property="bookShelf" column="book_shelf"/>
+        <result property="bookFloor" column="book_floor"/>
+        <result property="bookCount" column="book_count"/>
+        <result property="isLend" column="is_lend"/>
+        <result property="dayClickCount" column="day_click_count"/>
+        <result property="monthClickCount" column="month_click_count"/>
+        <result property="totalClickCount" column="total_click_count"/>
+        <result property="publishDate" column="publish_date"/>
+
+    </resultMap>
+
+    <sql id="baseSql">
+        id,card_id,search_id,book_name,cid,author,cover,press,press_date,book_desc,book_shelf,book_floor,book_count,price,is_lend
+        ,day_click_count,month_click_count,total_click_count,publish_date
+    </sql>
+
+    <sql id="baseIf">
+        <trim prefix="where" suffixOverrides="and">
+            <if test="id != null">
+                id = #{id} and
+            </if>
+            <if test="bookName != null">
+                book_name like #{bookName} and
+            </if>
+            <if test="searchId != null">
+                search_id = #{searchId} and
+            </if>
+            <if test="author != null">
+                author = #{author} and
+            </if>
+            <if test="cardId != null">
+                card_id = #{cardId} and
+            </if>
+        </trim>
+    </sql>
+
+    <select id="get" resultMap="baseMap">
+        select
+        <include refid="baseSql"/>
+        from book
+        <include refid="baseIf"/>
+    </select>
+
+    <select id="selectAll" resultMap="baseMap">
+        select
+        <include refid="baseSql"/>
+        from book
+    </select>
+
+    <select id="selectAllByCondition" resultMap="baseMap">
+        select
+        <include refid="baseSql"/>
+        from book
+        <include refid="baseIf"/>
+    </select>
+
+    <!--id,card_id,search_id,book_name,cid,author,cover,press,press_date,book_desc,book_shelf
+    ,book_floor,count,price,is_lend-->
+    <!--,day_click_count,month_click_count,total_click_count,publish_date-->
+    <insert id="save" parameterType="com.library.pojo.Book" useGeneratedKeys="true" keyProperty="id">
+        <!--id,username,password,telephone,email,headImage,status,register-->
+        insert into
+        book(book_name,cid,author,cover,press,press_date,book_desc,book_shelf,book_floor,book_count,price,is_lend,day_click_count,month_click_count,total_click_count,publish_date)
+        values (#{bookName},#{cid},#{author},#{cover},#{press},#{pressDate},#{bookDesc},#{bookShelf},#{bookFloor}
+        ,#{bookCount},price,1,0,0,0,#{publishDate})
+    </insert>
+
+    <update id="update" parameterType="com.library.pojo.Book">
+        update book
+        <set>
+            <if test="bookName != null">
+                book_name = #{bookName} ,
+            </if>
+            <if test="bookDesc != null">
+                book_desc = #{bookDesc} ,
+            </if>
+            <if test="bookShelf != null">
+                book_shelf = #{bookShelf} ,
+            </if>
+            <if test="bookFloor != null">
+                book_floor = #{bookFloor}
+            </if>
+            <if test="bookCount != null">
+                book_count = #{bookCount}
+            </if>
+            <if test="price != null">
+                price = #{price}
+            </if>
+            <if test="isLend != null">
+                is_lend = #{isLend}
+            </if>
+            <if test="dayClickCount != null">
+                day_click_count = #{dayClickCount}
+            </if>
+            <if test="monthClickCount != null">
+                month_click_count = #{monthClickCount}
+            </if>
+            <if test="totalClickCount != null">
+                total_click_count = #{totalClickCount}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.library.pojo.Book">
+        delete from book where id = #{id}
+    </delete>
+
+    <select id="bookNum" resultMap="baseMap">
+     select
+      <include refid="baseSql"/>
+      from book where id= #{id}
+    </select>
+
+
+    <!--int subBook(int book);-->
+<update id="subBook">
+update book
+set book_count=book_count-#{num}
+where id=#{bookId}
+</update>
+
+<!--
+    void bookDown(Integer bookId);
+-->
+    <update id="bookDown">
+        update book
+        set is_lend=0
+        where id=#{id}
+    </update>
+    <!--
+     void bookUp(Integer bookId);
+    -->
+    <update id="bookUp">
+        update book
+        set is_lend=1
+        where id=#{id}
+    </update>
+</mapper>

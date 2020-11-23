@@ -1,0 +1,85 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.NoticeUserDao">
+
+    <!--  *
+    id
+        private int uid;
+   private int nid;
+    private int status;//代表未读，1代表已经读-->
+
+
+
+    <sql id="baseSql">
+      id,uid,nid,status
+    </sql>
+
+    <sql id="baseIf">
+        <trim prefix="where" suffixOverrides="and">
+            <if test="id != null">
+                id = #{id} or
+            </if>
+            <if test="bookName != null">
+                uid = #{uid} or
+            </if>
+            <if test="searchId != null">
+                nid = #{nid} or
+            </if>
+            <if test="author != null">
+                status = #{status} or
+            </if>
+
+        </trim>
+    </sql>
+
+
+
+    <select id="selectAll" resultType="com.library.pojo.NoticeUser">
+        select
+        <include refid="baseSql"/>
+        from notice_user
+        where uid=#{uid} and status =0
+    </select>
+
+    <select id="selectAllByCondition" resultType="com.library.pojo.NoticeUser">
+        select
+        <include refid="baseSql"/>
+        from book
+        <include refid="baseIf"/>
+    </select>
+
+    <!--id,card_id,search_id,book_name,cid,author,cover,press,press_date,book_desc,book_shelf
+    ,book_floor,count,price,is_lend-->
+    <!--,day_click_count,month_click_count,total_click_count,publish_date-->
+    <insert id="save" parameterType="com.library.pojo.NoticeUser" useGeneratedKeys="true" keyProperty="id">
+        <!--id,username,password,telephone,email,headImage,status,register-->
+        insert into notice_user(id,uid,nid,status)
+        values (#{id},#{uid},#{nid},#{status})
+    </insert>
+
+    <update id="update" parameterType="com.library.pojo.NoticeUser">
+        update book
+        <set>
+            <if test="id != null">
+                id = #{id} ,
+            </if>
+            <if test="uid != null">
+                uid = #{uid} ,
+            </if>
+            <if test="nid != null">
+                nid = #{nid} ,
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.library.pojo.NoticeUser">
+        delete from notice_user where id = #{id}
+    </delete>
+
+
+</mapper>

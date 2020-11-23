@@ -1,0 +1,72 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.NoticeDao">
+
+    <!--
+     id int primary key auto_increment comment "ID",
+     message varchar(255) comment "消息",
+     status int comment "为0的话，就表示全发，不为0就发用户",
+     publish_date varchar(50) comment "发布消息时间"-->
+
+    <sql id="baseSql">
+        id,uid,message,status,publish_date
+    </sql>
+
+
+    <select id="getNoticeById" resultType="com.library.pojo.Notice">
+        select
+        <include refid="baseSql"/>
+        from notice
+        where id = #{id}
+    </select>
+
+    <!--<select id="getNoticeByUserId" resultType="com.library.pojo.Notice">-->
+        <!--select-->
+        <!--<include refid="baseSql"/>-->
+        <!--from notice-->
+        <!--where uid = #{uid}-->
+    <!--</select>-->
+
+    <select id="selectAll" resultType="com.library.pojo.Notice">
+        select
+        <include refid="baseSql"/>
+        from notice
+    </select>
+
+    <insert id="save" parameterType="com.library.pojo.Notice" useGeneratedKeys="true" keyProperty="id">
+        insert into notice(message,status,publish_date)
+        values (#{message},#{status},#{publishDate})
+    </insert>
+
+    <update id="update" parameterType="com.library.pojo.Notice">
+        update notice
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="message != null">
+                message = #{message},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="publishDate != null">
+                publishDate = #{publishDate}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from notice where id = #{id}
+    </delete>
+
+    <select id="getNoticeByUserId" resultType="com.library.pojo.Notice">
+        select
+        <include refid="baseSql"/>
+        from notice
+        where uid=#{uid} or uid=0
+    </select>
+
+</mapper>

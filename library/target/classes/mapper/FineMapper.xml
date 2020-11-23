@@ -1,0 +1,110 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.FineDao">
+
+    <!--i id int primary key auto_increment comment "ID",
+     uid int comment "用户ID",
+     price double comment "罚款金额",
+     fine_desc varchar(255) comment "罚款描述即原因",
+     pay_date date comment "付款时间"
+
+    private Integer id;
+    private Integer uid;
+    private Double price;
+    private String fineDesc;
+    private String payDate;
+     -->
+
+    <sql id="baseSql">
+        id,uid,price,fine_desc,pay_date
+    </sql>
+
+
+    <select id="get" resultType="com.library.pojo.Fine">
+        select
+        <include refid="baseSql"/>
+        from fine
+        <trim prefix="where" suffixOverrides="and">
+            <if test="id != null">
+                id = #{id} and
+            </if>
+            <if test="uid != null">
+                uid = #{uid} and
+            </if>
+            <if test="price != null">
+                price = #{price} and
+            </if>
+            <if test="fineDesc != null">
+                fine_desc = #{fineDesc} and
+            </if>
+            <if test="payDate != null">
+                pay_date = #{payDate} and
+            </if>
+        </trim>
+    </select>
+
+    <select id="selectAll" resultType="com.library.pojo.Fine">
+        select
+        <include refid="baseSql"/>
+        from fine
+    </select>
+
+
+
+
+    <insert id="save" parameterType="com.library.pojo.Fine" useGeneratedKeys="true" keyProperty="id">
+        <!--id,username,password,telephone,email,headImage,status,register-->
+        insert into fine( id,uid,price,fine_desc,pay_date)
+        values (#{id},#{uid},#{price},#{fineDesc},#{payDate})
+    </insert>
+
+    <update id="update" parameterType="com.library.pojo.Fine">
+        update fine
+        <set>
+            <if test="uid != null">
+                uid = #{uid} ,
+            </if>
+            <if test="price != null">
+                price = #{price} ,
+            </if>
+            <if test="fineDesc != null">
+            fine_desc = #{fineDesc},
+           </if>
+            <if test="payDate != null">
+                pay_date = #{payDate}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from fine where id = #{id}
+    </delete>
+
+    <select id="selectAllByCondition">
+        select
+        <include refid="baseSql"/>
+        from fine
+        <where>
+
+                <if test="id != null">
+                   or id = #{id}
+                </if>
+                <if test="uid != null">
+                  or  uid = #{uid}
+                </if>
+                <if test="price != null">
+                   or price = #{price}
+                </if>
+                <if test="fineDesc != null">
+                  or  fine_desc like #{fineDesc}
+                </if>
+                <if test="payDate != null">
+                 or   pay_date = #{payDate}
+                </if>
+
+        </where>
+    </select>
+
+</mapper>

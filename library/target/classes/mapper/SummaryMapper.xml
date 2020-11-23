@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.SummaryDao">
+
+    <!--  *
+        id int primary key auto_increment comment "ID",
+     * 	card_id varchar(20) comment "图书编号",
+     * 	search_id varchar(30) comment "检索号",
+     * 	book_name varchar(50) comment "书名",
+     * 	cid int comment "类别",
+     * 	author varchar(20) comment "作者",
+     * 	press varchar(50) comment "出版社",
+     * 	press_date date comment "出版时间",
+     * 	book_desc varchar(250) comment "书的描述",
+     * 	book_shelf int comment "所在书架",
+     * 	book_floor int comment "所在书架哪一层",
+     * 	count int comment "书的数量" default 0,
+     * 	price double comment "书的价格" default 0,
+     * 	is_lend int comment "是否可借，0表示不可借，1表示可借" default 0,
+     * 	day_click_count int comment "每日点击量" default 0,
+     * 	month_click_count int comment "每月点击量" default 0,
+     * 	total_click_count int comment "总点击量" default 0,
+     * 	publish_date date comment "上架时间"-->
+
+
+  <select id="sum" resultType="int">
+      select count(*) from user_book
+where (lend_date between '${startDate} 00:00:00' and '${endDate} 23:59:59' and 0=#{status})
+or(lend_date between '${startDate} 00:00:00' and '${endDate} 23:59:59' and 1=#{status})
+or(lend_date between '${startDate} 00:00:00' and '${endDate} 23:59:59' and 2=#{status})
+  </select>
+</mapper>
