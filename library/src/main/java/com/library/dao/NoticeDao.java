@@ -1,10 +1,9 @@
 package com.library.dao;
 
-import java.util.List;
-
+import com.library.pojo.Notice;
 import org.apache.ibatis.annotations.Param;
 
-import com.library.pojo.Notice;
+import java.util.List;
 
 public interface NoticeDao extends BaseDao<Notice> {
 	Notice getNoticeById(Integer id);
@@ -13,4 +12,8 @@ public interface NoticeDao extends BaseDao<Notice> {
 
 	// 查询私有未读消息
 	List<Notice> getUnReadMsgByUserId(Integer userId);
+
+	Integer getUnReadNumMsgByUserId(Integer userId);
+
+    List<Notice> selectByMessage(String message);
 }

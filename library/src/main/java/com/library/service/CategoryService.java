@@ -1,7 +1,6 @@
 package com.library.service;
 
 import com.github.pagehelper.PageInfo;
-import com.library.pojo.Book;
 import com.library.pojo.Category;
 
 import java.util.List;
@@ -15,4 +14,5 @@ public interface CategoryService {
     int delete(Integer id);
 
     void add(List<Category> list);
+    public int addOne(Category category);
 }

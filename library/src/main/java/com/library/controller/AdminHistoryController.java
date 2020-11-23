@@ -1,18 +1,12 @@
 package com.library.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.github.pagehelper.PageInfo;
 import com.library.pojo.Result;
 import com.library.pojo.ResultCode;
 import com.library.pojo.UserBook;
 import com.library.service.UserBookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -24,7 +18,7 @@ public class AdminHistoryController {
 	// 参数：
 	// pageSize：每页显示大小
 	// currentPage：当前页
-	@RequestMapping("/admin/history/select/{pageSize}/{currentPage}")
+	@GetMapping("/admin/history/select/{pageSize}/{currentPage}")
 	public Result<PageInfo<UserBook>> history(@PathVariable("pageSize") Integer pageSize,
 			@PathVariable("currentPage") Integer currentPage) {
 		PageInfo<UserBook> pageInfo = userBookService.selectAll(currentPage, pageSize);
@@ -52,7 +46,7 @@ public class AdminHistoryController {
 		return new Result<>(ResultCode.FAIL, "查询失败");
 	}
 
-	// 按书名模糊查询借阅状态
+	// 按书名模糊查询借阅
 	// http://10.10.102.163:8001/admin/book/search
 	// 参数：表单提交
 

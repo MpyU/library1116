@@ -57,9 +57,9 @@ public class NoticeController {
 	@ApiOperation("根据用户id查询用户所有未读的消息")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "userId", required = true) })
 	// 返回该用户id未读的消息
-	@GetMapping("/getUnReadMsgByUserId/{userId}")
-	public Result<PageInfo<Notice>> getUnReadMsgByUserId(@PathVariable("userId") Integer userId) {
-		PageInfo<Notice> pageInfo = noticeService.getUnReadMsgByUserId(userId);
+	@GetMapping("/getUnReadMsgByUserId/{pageSize}/{userId}")
+	public Result<PageInfo<Notice>> getUnReadMsgByUserId(@PathVariable("pageSize")Integer pageSize,@PathVariable("userId") Integer userId) {
+		PageInfo<Notice> pageInfo = noticeService.getUnReadMsgByUserId(1,pageSize,userId);
 		return new Result<PageInfo<Notice>>(ResultCode.SUCCESS, "查询成功", pageInfo);
 
 	}

@@ -1,9 +1,9 @@
 package com.library.service;
 
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.github.pagehelper.PageInfo;
 import com.library.pojo.Notice;
+
+import java.util.List;
 
 public interface NoticeService {
 	Notice get(Integer id);
@@ -18,7 +18,9 @@ public interface NoticeService {
 
 	PageInfo<Notice> getByUserId(Integer id, Integer currentPage, Integer pageSize);
 
-	public PageInfo<Notice> getUnReadMsgByUserId(@PathVariable("userId") Integer userId);
+	public PageInfo<Notice> getUnReadMsgByUserId(Integer currentPage,Integer pageSize,   Integer userId);
 
 	Integer getUnReadMsgNum(Integer userId);
+
+    List<Notice> selectByMessage(Integer pageSize, Integer currentPage, String message);
 }

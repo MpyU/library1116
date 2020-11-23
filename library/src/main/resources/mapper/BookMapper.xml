@@ -78,7 +78,7 @@
         select
         <include refid="baseSql"/>
         from book
-        <include refid="baseIf"/>
+        where id=#{id}
     </select>
 
     <select id="selectAll" resultMap="baseMap">
@@ -101,8 +101,8 @@
     <insert id="save" parameterType="com.library.pojo.Book" useGeneratedKeys="true" keyProperty="id">
         <!--id,username,password,telephone,email,headImage,status,register-->
         insert into
-        book(book_name,cid,author,cover,press,press_date,book_desc,book_shelf,book_floor,book_count,price,is_lend,day_click_count,month_click_count,total_click_count,publish_date)
-        values (#{bookName},#{cid},#{author},#{cover},#{press},#{pressDate},#{bookDesc},#{bookShelf},#{bookFloor}
+        book(book_name,cid,card_id,search_id,author,cover,press,press_date,book_desc,book_shelf,book_floor,book_count,price,is_lend,day_click_count,month_click_count,total_click_count,publish_date)
+        values (#{bookName},#{cid},#{cardId},#{searchId},#{author},#{cover},#{press},#{pressDate},#{bookDesc},#{bookShelf},#{bookFloor}
         ,#{bookCount},price,1,0,0,0,#{publishDate})
     </insert>
 
@@ -112,7 +112,9 @@
             <if test="cid != null">
                 cid = #{cid} ,
             </if>
-            
+            <if test="press != null">
+                press = #{press} ,
+            </if>
               <if test="bookName != null">
                 book_name = #{bookName} ,
             </if>
@@ -159,11 +161,11 @@
 
 
     <!--int subBook(int book);-->
-<update id="subBook">
-update book
-set book_count=book_count-#{num}
-where id=#{bookId}
-</update>
+    <update id="subBook">
+        update book
+        set book_count=book_count-#{num}
+        where id=#{bookId}
+    </update>
 
 <!--
     void bookDown(Integer bookId);

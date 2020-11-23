@@ -47,6 +47,5 @@ com\library\pojo\Category.class
 com\library\controller\AdminBookController.class
 com\library\config\MyConfig.class
 com\library\controller\AdminUserController.class
-com\library\controller\AdminSummary.class
 com\library\LibraryMain.class
 com\library\interceptors\LoginInterceptor.class

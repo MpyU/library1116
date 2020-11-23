@@ -20,7 +20,28 @@
         from notice
         where id = #{id}
     </select>
-
+    <select id="get" resultType="com.library.pojo.Notice">
+        select
+        <include refid="baseSql"/>
+        from notice
+        <trim prefix="where" suffixOverrides="and">
+            <if test="id != null">
+                id = #{id} and
+            </if>
+            <if test="uid != null">
+                uid = #{uid} and
+            </if>
+            <if test="message != null">
+                message = #{message} and
+            </if>
+            <if test="status != null">
+                status = #{status} and
+            </if>
+            <if test="publishDate != null">
+                publishDate = #{publish_date} and
+            </if>
+        </trim>
+    </select>
     <!--<select id="getNoticeByUserId" resultType="com.library.pojo.Notice">-->
         <!--select-->
         <!--<include refid="baseSql"/>-->
@@ -52,7 +73,7 @@
                 status = #{status},
             </if>
             <if test="publishDate != null">
-                publishDate = #{publishDate}
+                publish_date = #{publishDate}
             </if>
         </set>
         where id = #{id}
@@ -69,4 +90,25 @@
         where uid=#{uid} or uid=0
     </select>
 
+    <!--getUnReadNumMsgByUserId:查询单独发送给该用户未读消息的数量,不包括未读共有消息的数量-->
+    <select id="getUnReadNumMsgByUserId" resultType="int">
+        select count(*) total
+        from notice
+        where status=0 and uid=#{uid} and uid !=0
+    </select>
+
+    <!--用户查询私有未读消息-->
+    <select id="getUnReadMsgByUserId" resultType="com.library.pojo.Notice">
+       select
+       <include refid="baseSql"/>
+        from notice
+        where uid=#{uid} and status=0
+    </select>
+    <select id="selectByMessage" resultType="com.library.pojo.Notice">
+        select
+        <include refid="baseSql"/>
+        from notice
+        where message like #{message}
+
+    </select>
 </mapper>

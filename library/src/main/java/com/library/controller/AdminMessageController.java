@@ -1,31 +1,22 @@
 package com.library.controller;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.github.pagehelper.PageInfo;
 import com.library.pojo.Notice;
 import com.library.pojo.Result;
 import com.library.pojo.ResultCode;
 import com.library.service.NoticeService;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 //http://10.10.102.163:8001/admin/message/pageSize/currentPage
 
@@ -57,12 +48,12 @@ public class AdminMessageController {
 	// pageSize：每页显示大小
 	// currentPage：当前页
 	@ApiOperation("管理员查询所有消息，包括公开发布给所有人的和单独发布给某个用户的")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "pageSize", required = true),
-			@ApiImplicitParam(name = "currentPage", required = true) })
+	@ApiImplicitParams({@ApiImplicitParam(name = "pageSize", required = true),
+			@ApiImplicitParam(name = "currentPage", required = true)})
 
 	@GetMapping("/{pageSize}/{currentPage}")
 	public Result<PageInfo<Notice>> messgae(@PathVariable("pageSize") Integer pageSize,
-			@PathVariable("currentPage") Integer currentPage) {
+											@PathVariable("currentPage") Integer currentPage) {
 		PageInfo<Notice> pageInfo = noticeService.selectAll(currentPage, pageSize);
 		if (pageInfo.getList().size() > 0) {
 			return new Result<>(ResultCode.SUCCESS, "查询成功", pageInfo);
@@ -77,10 +68,10 @@ public class AdminMessageController {
 	// 参数：
 	// bookid：查询的消息的ID
 	@ApiOperation("根据消息id查询消息详情")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "messageId", required = true) })
+	@ApiImplicitParams({@ApiImplicitParam(name = "messageId", required = true)})
 	@GetMapping("/detail/{messageId}")
 	public Result<Notice> messageDetail(@PathVariable("messageId") Integer messageId,
-			HttpServletRequest httpServletRequest) {
+										HttpServletRequest httpServletRequest) {
 		Notice notice = noticeService.get(messageId);
 		return new Result<>(ResultCode.SUCCESS, "查询成功", notice);
 	}
@@ -89,9 +80,9 @@ public class AdminMessageController {
 	// http://10.10.102.163:8001/admin/message/add
 	// 参数：表单提交
 	@ApiOperation("添加一条消息")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "message", required = true),
+	@ApiImplicitParams({@ApiImplicitParam(name = "message", required = true),
 			@ApiImplicitParam(name = "uid", required = true, allowableValues = "发送到用户的id，代表消息发送到该id的用户，0代表消息发送到所有用户"),
-			@ApiImplicitParam(name = "status", required = true, allowableValues = "0:消息未读，1：消息已读") })
+			@ApiImplicitParam(name = "status", required = true, allowableValues = "0:消息未读，1：消息已读")})
 	@PostMapping("/add")
 	public Result messageAdd(Notice notice) {
 		LocalDate publishDate = LocalDate.now();
@@ -110,13 +101,13 @@ public class AdminMessageController {
 	// http://10.10.102.163:8001/admin/message/list/pageSize/currentPage/userid
 	// 参数：用户id
 	@ApiOperation("管理员查询发给某用户的所有消息（包括单独发送给该用户的消息+公有消息）")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "pageSize", required = true),
+	@ApiImplicitParams({@ApiImplicitParam(name = "pageSize", required = true),
 			@ApiImplicitParam(name = "currentPage", required = true),
-			@ApiImplicitParam(name = "userid", required = true) })
+			@ApiImplicitParam(name = "userid", required = true)})
 	@GetMapping("/list/{pageSize}/{currentPage}/{userid}")
 	public Result<PageInfo<Notice>> messageDetail(@PathVariable("currentPage") Integer currentPage,
-			@PathVariable("pageSize") Integer pageSize, @PathVariable("userid") Integer userid,
-			HttpServletRequest httpServletRequest) {
+												  @PathVariable("pageSize") Integer pageSize, @PathVariable("userid") Integer userid,
+												  HttpServletRequest httpServletRequest) {
 		PageInfo<Notice> pageInfo = noticeService.getByUserId(userid, currentPage, pageSize);
 
 		return new Result<PageInfo<Notice>>(ResultCode.SUCCESS, "查询成功", pageInfo);
@@ -143,4 +134,17 @@ public class AdminMessageController {
 		}
 		return new Result(ResultCode.FAIL, "删除消息失败！");
 	}
+
+	//http://10.10.102.162/admin/message/selectByMessage/{pageSize}/{currentPage}/{message}
+	//根据消息内容模糊查询
+	@GetMapping("/selectByMessage/{pageSize}/{currentPage}/{message}")
+	public Result<PageInfo<Notice>> selectByMessage(@PathVariable("pageSize") Integer pageSize, @PathVariable("currentPage") Integer currentPage,@PathVariable("message") String message) {
+		List<Notice> list = noticeService.selectByMessage(pageSize, currentPage, message);
+		PageInfo pageInfo=new PageInfo(list);
+		if(pageInfo.getList().size()>0){
+			return new Result(ResultCode.SUCCESS,"查询成功",pageInfo);
+		}
+		return new Result(ResultCode.FAIL,"查询失败,无数据");
+	}
+
 }

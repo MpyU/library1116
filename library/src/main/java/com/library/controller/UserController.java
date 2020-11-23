@@ -1,27 +1,5 @@
 package com.library.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.library.pojo.Result;
@@ -31,12 +9,19 @@ import com.library.service.BookService;
 import com.library.service.UserBookService;
 import com.library.service.UserService;
 import com.library.utils.JwtUtils;
-
 import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Api(tags = "用户管理接口")
 @RestController
@@ -152,10 +137,10 @@ public class UserController {
 	@ApiImplicitParams({ @ApiImplicitParam(name = "id", value = "用户ID", required = true) })
 
 	// http://10.10.102.163:8001/user/lend/bookId
-	@PostMapping("/lend/{bookId}")
-	public Result lendBook(@PathVariable("bookId") Integer bookId, HttpServletRequest httpServletRequest) {
-		Map<String, Object> user = mapparseHeaderToUser(httpServletRequest);
-		Integer userID = (Integer) user.get("id");
+	@PostMapping("/lend/{bookId}/{userID}")
+	public Result lendBook(@PathVariable("userID")Integer userID,@PathVariable("bookId") Integer bookId, HttpServletRequest httpServletRequest) {
+//		Map<String, Object> user = mapparseHeaderToUser(httpServletRequest);
+
 		// 用户借书数量是否达到三本
 		boolean canLean = userBookService.canLendBook(userID);
 		// 书的余量
@@ -185,10 +170,9 @@ public class UserController {
 
 	// 还书
 	// http://10.10.102.163:8001/user/returnBook/bookId
-	@PutMapping("returnBook/{bookId}")
-	public Result returnBook(@PathVariable("bookId") Integer bookId, HttpServletRequest httpServletRequest) {
+	@PutMapping("returnBook/{bookId}/{userId}")
+	public Result returnBook(@PathVariable("userId")Integer userId,@PathVariable("bookId") Integer bookId, HttpServletRequest httpServletRequest) {
 		Map<String, Object> user = mapparseHeaderToUser(httpServletRequest);
-		Integer userId = (Integer) user.get("id");
 		int result = userBookService.returnBook(userId, bookId);
 		if (result > 0) {
 			return new Result(ResultCode.SUCCESS, "还书成功");

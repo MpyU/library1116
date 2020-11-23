@@ -112,9 +112,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return pageInfo;
 	}
 
-	public PageInfo<Notice> getUnReadMsgByUserId(Integer userId) {
+	public PageInfo<Notice> getUnReadMsgByUserId(Integer currentPage,Integer pageSize,  Integer userId) {
 		List<Notice> unReadNotice = new LinkedList<Notice>();
 		// 查询公有未读消息，并且设置为已读
+		PageHelper.startPage(currentPage,pageSize);
 		List<NoticeUser> listNoticeUser = noticeUserDao.getUnReadMsgByUserId(userId);
 		for (NoticeUser noticeUser : listNoticeUser) {
 			if (noticeUser.getNid() != null) {
@@ -141,8 +142,23 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public Integer getUnReadMsgNum(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		Integer privateUnreadNum=noticeDao.getUnReadNumMsgByUserId(userId);
+		Integer publicUnreadNum=noticeUserDao.getUnReadMsgNum(userId);
+		int total=0;
+		if(privateUnreadNum!=null){
+			total=total+privateUnreadNum;
+		}
+		if(publicUnreadNum!=null){
+			total=total+publicUnreadNum;
+		}
+		return total;
+	}
+
+	@Override
+	public List<Notice> selectByMessage(Integer pageSize, Integer currentPage, String message) {
+		message="%"+message+"%";
+		PageHelper.startPage(currentPage,pageSize);
+		return noticeDao.selectByMessage(message);
 	}
 
 }

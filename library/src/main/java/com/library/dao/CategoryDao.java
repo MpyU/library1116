@@ -8,4 +8,6 @@ public interface CategoryDao extends BaseDao<Category> {
     List<Category> selectAllByCondition(Category category);
 
     void add(List<Category> list);
+
+    int addOne(Category category);
 }

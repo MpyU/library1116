@@ -59,7 +59,7 @@
     </insert>
 
     <update id="update" parameterType="com.library.pojo.NoticeUser">
-        update book
+        update notice_user
         <set>
             <if test="id != null">
                 id = #{id} ,
@@ -80,6 +80,22 @@
     <delete id="delete" parameterType="com.library.pojo.NoticeUser">
         delete from notice_user where id = #{id}
     </delete>
+<!--查询发送给所有人的，但是该用户还没有读的公有消息数量-->
+<select id="getUnReadMsgNum" resultType="int">
+  select  count(*) total
+  from notice
+  left join notice_user
+  on notice.id=notice_user.nid
+  where  notice.uid=0 and notice_user.uid=#{uid} and notice_user.status=0;
+</select>
 
+    <select id="getUnReadMsgByUserId" resultType="com.library.pojo.NoticeUser">
+
+          select
+          <include refid="baseSql"/>
+        from notice_user
+        where uid=#{uid} and notice_user.status=0
+
+    </select>
 
 </mapper>

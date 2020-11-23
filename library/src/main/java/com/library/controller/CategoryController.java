@@ -1,21 +1,15 @@
 package com.library.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.github.pagehelper.PageInfo;
 import com.library.climb.ClimbData;
 import com.library.pojo.Category;
 import com.library.pojo.Result;
 import com.library.pojo.ResultCode;
 import com.library.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/category")
@@ -68,13 +62,23 @@ public class CategoryController {
 		return new Result(ResultCode.SUCCESS, "删除分类失败！");
 	}
 
-	// @GetMapping("/add")
+	// @GetMapping("/addList")
 	public String lists() {
 
 		List<Category> list = ClimbData.categories();
 		categoryService.add(list);
 
 		return "success";
+	}
+   @PostMapping("/add")
+	public Result<Integer> add(Category category) {
+		Integer result=categoryService.addOne(category);
+		if(result !=null ){
+			if(result>=0){
+				return new Result(ResultCode.SUCCESS,"添加成功",result);
+			}
+		}
+	   return new  Result(ResultCode.FAIL,"添加失败");
 	}
 
 }

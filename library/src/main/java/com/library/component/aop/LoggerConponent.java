@@ -1,7 +1,5 @@
 package com.library.component.aop;
 
-import java.util.Arrays;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -9,6 +7,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 //注释掉@Aspect方便开发看控制台，注释掉后aop切面不起作用，因为这个注解表明这是一个aop切面类，实际生产中要打开
 @Aspect

@@ -84,4 +84,8 @@ public class CategoryServiceImpl implements CategoryService {
 	public void add(List<Category> list) {
 		categoryDao.add(list);
 	}
+
+	public int addOne(Category category) {
+		return categoryDao.addOne(category);
+	}
 }

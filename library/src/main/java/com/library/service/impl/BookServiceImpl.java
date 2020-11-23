@@ -1,10 +1,5 @@
 package com.library.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.library.dao.BookDao;
@@ -12,6 +7,10 @@ import com.library.dao.CategoryDao;
 import com.library.pojo.Book;
 import com.library.pojo.Category;
 import com.library.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -25,8 +24,11 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public Book get(Book book) {
 		Book book1 = bookDao.get(book);
-		Category category = categoryDao.get(new Category(book1.getCid()));
-		book1.setCategory(category);
+		if(book1!=null && book.getCid()!=null){
+			Category category = categoryDao.get(new Category(book1.getCid()));
+			book1.setCategory(category);
+		}
+
 		return book1;
 	}
 
@@ -75,7 +77,10 @@ public class BookServiceImpl implements BookService {
 		if (book.getCid() != null) {
 			cid = book.getCid();
 			Category category = categoryDao.get(new Category(cid));
-			book.setBookFloor(category.getFloor());
+			if(category!=null&&category.getFloor()!=null){
+				book.setBookFloor(category.getFloor());
+			}
+
 		}
 		int result = bookDao.save(book);
 		// int i = 10 / 0;

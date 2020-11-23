@@ -1,8 +1,8 @@
 package com.library.dao;
 
-import java.util.List;
-
 import com.library.pojo.NoticeUser;
+
+import java.util.List;
 
 public interface NoticeUserDao extends BaseDao<NoticeUser> {
 

@@ -140,6 +140,7 @@ public class BookController {
 			@ApiImplicitParam(name = "bookShelf", value = "所在书架", defaultValue = "1") })
 	@PutMapping("/update")
 	public Result<Integer> update(Book book) {
+		System.out.println("----------"+book);
 		int row = bookService.update(book);
 		if (row > 0) {
 			return new Result(ResultCode.SUCCESS, "修改图书信息成功！", row);

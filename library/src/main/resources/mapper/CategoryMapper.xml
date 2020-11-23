@@ -79,7 +79,10 @@
   <delete id="delete" parameterType="com.library.pojo.Category">
         delete from category where id = #{id} and id!=-1
     </delete>
-
+    <insert id="addOne" >
+        insert into category(category_name,category_desc,floor,parent_id)
+        values(#{categoryName},#{categoryDesc},#{floor},0)
+    </insert>
     <!--<insert id="save" parameterType="com.library.pojo.Category" useGeneratedKeys="true" keyProperty="id">-->
         <!--&lt;!&ndash;id,username,password,telephone,email,headImage,status,register&ndash;&gt;-->
         <!--insert into category(category_name,category_desc,floor,parent_id)-->
