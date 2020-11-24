@@ -105,18 +105,38 @@
         values (#{bookName},#{cid},#{cardId},#{searchId},#{author},#{cover},#{press},#{pressDate},#{bookDesc},#{bookShelf},#{bookFloor}
         ,#{bookCount},price,1,0,0,0,#{publishDate})
     </insert>
-
+<!--
+ id,card_id,search_id,book_name,cid,author,cover,press,press_date,book_desc,book_shelf,
+ book_floor,book_count,price,is_lend
+        ,day_click_count,month_click_count,total_click_count,publish_date
+-->
     <update id="update" parameterType="com.library.pojo.Book">
         update book
         <set>
+            <if test="cardId != null">
+                card_id = #{cardId} ,
+            </if>
+
+            <if test="searchId != null">
+                search_id = #{searchId} ,
+            </if>
+            <if test="bookName != null">
+                book_name = #{bookName} ,
+            </if>
             <if test="cid != null">
                 cid = #{cid} ,
+            </if>
+            <if test="author != null">
+                author = #{author} ,
+            </if>
+            <if test="cover != null">
+                cover = #{cover} ,
             </if>
             <if test="press != null">
                 press = #{press} ,
             </if>
-              <if test="bookName != null">
-                book_name = #{bookName} ,
+            <if test="pressDate != null">
+                press_date = #{pressDate} ,
             </if>
             <if test="bookDesc != null">
                 book_desc = #{bookDesc} ,
@@ -143,7 +163,10 @@
                 month_click_count = #{monthClickCount},
             </if>
             <if test="totalClickCount != null">
-                total_click_count = #{totalClickCount},
+            total_click_count = #{totalClickCount},
+           </if>
+            <if test="publishDate != null">
+                publish_date = #{publishDate},
             </if>
         </set>
         where id = #{id}

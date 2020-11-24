@@ -14,6 +14,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,11 @@ public class UserController {
 	@Autowired
 	private BookService bookService;
 
+	@Autowired
+	RabbitTemplate rabbitTemplate;
+
+
+
 	@ApiImplicitParams({ @ApiImplicitParam(name = "username", value = "用户名", defaultValue = "李四", required = true),
 			@ApiImplicitParam(name = "password", value = "用户密码", defaultValue = "123", required = true),
 			@ApiImplicitParam(name = "telephone", value = "联系方式", defaultValue = "12312312312"),
@@ -56,6 +62,8 @@ public class UserController {
 		System.out.println(user);
 		int row = userService.save(user);
 		if (row > 0) {
+
+			rabbitTemplate.convertAndSend("mail_queue",new Gson().toJson(user));
 			return new Result(ResultCode.SUCCESS, "注册成功！", row);
 		}
 		return new Result(ResultCode.FAIL, "注册失败！");
@@ -82,6 +90,7 @@ public class UserController {
 			List<Object> list = new ArrayList<>();
 			list.add(u.getId());
 			list.add(token);
+			list.add(u.getStatus());
 			return new Result(ResultCode.SUCCESS, "登录成功！", list);
 		} else {
 			return new Result(ResultCode.FAIL, "用户名或密码有误！");

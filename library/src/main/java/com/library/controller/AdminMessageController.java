@@ -9,7 +9,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,8 +37,8 @@ public class AdminMessageController {
 	@Autowired
 	NoticeService noticeService;
 	//
-	@Autowired
-	private RabbitTemplate redisTemplate;
+//	@Autowired
+//	private RabbitTemplate redisTemplate;
 
 	// 管理员查询所有消息，包括公开发布给所有人的和发布给用户的
 	// 消息列表

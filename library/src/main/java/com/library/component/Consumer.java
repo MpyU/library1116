@@ -1,29 +1,60 @@
 package com.library.component;
 
+import com.google.gson.Gson;
+import com.library.pojo.User;
+import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 
-import com.library.pojo.Notice;
+import javax.mail.internet.MimeMessage;
 
 //暂时不使用
-//@Component
+@Component
 public class Consumer {
 
-	// * 发送信息用异步任务，传送到RabbitMQ,再读取RabbitMQ保存到Redis,+数据库
-	// * uid+message为key，用Redis的List保存未读消息的id,看到后就删除
-	// * 缺点：必须为redis设置过期时间，否则容易占满内存
-	@Autowired
-	RedisTemplate redisTemplate;
+    @Autowired
+    private JavaMailSender mailSender;
+    @Value("${spring.mail.username}")
+    private String mailFrom;
+//    @Value("${spring.mail.to}")
+//    private String mailTo;
+    @Value("${spring.mail.cc}")
+    private String mailCc;
+    //首页地址
 
-	@RabbitListener(queues = "notice_queue")
-	public void myListener(Notice notice) throws Exception {
-		System.out.println("msg:" + notice);
 
-	}
+    private String head="http://10.10.102.166:8081/";
 
-	public void timeWorker() {
 
-	}
+    @RabbitListener(queuesToDeclare = @Queue("mail_queue"))
+    public void myListener(String user) throws Exception {
+        User userT=new Gson().fromJson(user, User.class);
+        System.out.println("User:" +userT );
+
+
+        if(userT.getEmail()!=null){
+            //创建一个复杂的消息邮件
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+            //邮件设置 helper.setSubject("邮件附件发送测试");
+            String rep="<b style=\"color: red\">注册成功</b><br />\n" +
+                    "    <a href='"+head+"'>请前往首页</a>";
+            helper.setText(rep, true);
+//            System.err.println(rep);
+            helper.setTo(userT.getEmail());
+            helper.setFrom(mailFrom);
+
+            helper.setSubject("PY图书馆");
+            //上传文件
+            //
+//        helper.addAttachment("1.jpg", new File("src/main/resources/uploadFile/1.jpg"));
+//        helper.addAttachment("2.jpg", new File("src/main/resources/uploadFile/2.jpg"));
+            mailSender.send(mimeMessage);
+        }
+    }
 
 }
