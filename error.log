@@ -6633,3 +6633,363 @@ Caused by: org.springframework.mail.MailSendException: Failed messages: com.sun.
 2020-11-24 11:29:12.096  INFO 6392 --- [http-nio-8002-exec-2] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
 2020-11-24 11:29:12.133  INFO 6392 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#30ea1d71:0/SimpleConnection@3e5b5cb2 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 57082]
 2020-11-24 11:29:12.190  INFO 6392 --- [restartedMain] com.library.LibraryMain                  : Started LibraryMain in 6.396 seconds (JVM running for 7.125)
+2020-11-24 12:03:43.021  INFO 10504 --- [restartedMain] com.library.LibraryMain                  : Starting LibraryMain on PC-32 with PID 10504 (C:\Users\Administrator\IdeaProjects\library1116\library\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\library1116)
+2020-11-24 12:03:43.025  INFO 10504 --- [restartedMain] com.library.LibraryMain                  : The following profiles are active: dev
+2020-11-24 12:03:43.085  INFO 10504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-24 12:03:43.085  INFO 10504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-24 12:03:44.352  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 12:03:44.355  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-24 12:03:44.397  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
+2020-11-24 12:03:44.752  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:44.784  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:44.837  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:44.886  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:44.891  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.library.config.TxAnoConfig$$EnhancerBySpringCGLIB$$c427a144] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:44.904  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:44.910  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:44.910  INFO 10504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:03:45.443  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+2020-11-24 12:03:45.454  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 12:03:45.455  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-24 12:03:45.570  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 12:03:45.570  INFO 10504 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2485 ms
+2020-11-24 12:03:47.310  INFO 10504 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-24 12:03:47.400  INFO 10504 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-24 12:03:47.586  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 12:03:47.623  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-11-24 12:03:48.204  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8002 (http) with context path ''
+2020-11-24 12:03:48.206  INFO 10504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 12:03:48.239  INFO 10504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 12:03:48.272  INFO 10504 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 12:03:48.496  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: messageDetailUsingGET_1
+2020-11-24 12:03:48.515  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-11-24 12:03:48.520  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-11-24 12:03:48.531  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2020-11-24 12:03:48.543  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2020-11-24 12:03:48.547  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-11-24 12:03:48.549  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-11-24 12:03:48.550  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_1
+2020-11-24 12:03:48.552  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2020-11-24 12:03:48.554  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-11-24 12:03:48.557  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-11-24 12:03:48.558  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2020-11-24 12:03:48.560  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_2
+2020-11-24 12:03:48.566  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAllByConditionUsingGET_1
+2020-11-24 12:03:48.567  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_3
+2020-11-24 12:03:48.569  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-11-24 12:03:48.579  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-11-24 12:03:48.582  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-11-24 12:03:48.588  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2020-11-24 12:03:48.589  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_3
+2020-11-24 12:03:48.592  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_4
+2020-11-24 12:03:48.595  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-11-24 12:03:48.597  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-11-24 12:03:48.602  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2020-11-24 12:03:48.607  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_4
+2020-11-24 12:03:48.608  INFO 10504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_5
+2020-11-24 12:03:48.623  INFO 10504 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2020-11-24 12:03:48.649  INFO 10504 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6ad734e9:0/SimpleConnection@7e663439 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 58900]
+2020-11-24 12:03:48.875  INFO 10504 --- [restartedMain] com.library.LibraryMain                  : Started LibraryMain in 6.485 seconds (JVM running for 7.546)
+2020-11-24 12:04:08.635  INFO 10504 --- [http-nio-8002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 12:04:08.636  INFO 10504 --- [http-nio-8002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-24 12:04:08.647  INFO 10504 --- [http-nio-8002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-11-24 12:04:19.437 ERROR 10504 --- [http-nio-8002-exec-3] com.alibaba.druid.pool.DruidDataSource   : testWhileIdle is true, validationQuery not set
+2020-11-24 12:04:19.446  INFO 10504 --- [http-nio-8002-exec-3] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-11-24 12:06:04.548  INFO 10760 --- [restartedMain] com.library.LibraryMain                  : Starting LibraryMain on PC-32 with PID 10760 (C:\Users\Administrator\IdeaProjects\library1116\library\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\library1116)
+2020-11-24 12:06:04.551  INFO 10760 --- [restartedMain] com.library.LibraryMain                  : The following profiles are active: dev
+2020-11-24 12:06:04.650  INFO 10760 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-24 12:06:04.651  INFO 10760 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-24 12:06:05.830  INFO 10760 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 12:06:05.833  INFO 10760 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-24 12:06:05.880  INFO 10760 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32ms. Found 0 Redis repository interfaces.
+2020-11-24 12:06:06.271  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.299  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.339  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.388  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.393  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.library.config.TxAnoConfig$$EnhancerBySpringCGLIB$$938eed75] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.407  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.413  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.414  INFO 10760 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 12:06:06.786  INFO 10760 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+2020-11-24 12:06:06.795  INFO 10760 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 12:06:06.795  INFO 10760 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-24 12:06:06.895  INFO 10760 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 12:06:06.896  INFO 10760 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2245 ms
+2020-11-24 12:06:08.513  INFO 10760 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-24 12:06:08.594  INFO 10760 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-24 12:06:08.787  INFO 10760 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 12:06:08.820  INFO 10760 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-11-24 12:06:09.390  INFO 10760 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8002 (http) with context path ''
+2020-11-24 12:06:09.391  INFO 10760 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 12:06:09.410  INFO 10760 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 12:06:09.442  INFO 10760 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 12:06:09.635  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: messageDetailUsingGET_1
+2020-11-24 12:06:09.654  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-11-24 12:06:09.657  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-11-24 12:06:09.666  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2020-11-24 12:06:09.679  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2020-11-24 12:06:09.683  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-11-24 12:06:09.685  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-11-24 12:06:09.686  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_1
+2020-11-24 12:06:09.688  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2020-11-24 12:06:09.690  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-11-24 12:06:09.693  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-11-24 12:06:09.694  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2020-11-24 12:06:09.696  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_2
+2020-11-24 12:06:09.703  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAllByConditionUsingGET_1
+2020-11-24 12:06:09.704  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_3
+2020-11-24 12:06:09.706  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-11-24 12:06:09.716  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-11-24 12:06:09.719  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-11-24 12:06:09.726  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2020-11-24 12:06:09.727  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_3
+2020-11-24 12:06:09.730  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_4
+2020-11-24 12:06:09.733  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-11-24 12:06:09.735  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-11-24 12:06:09.740  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2020-11-24 12:06:09.747  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_4
+2020-11-24 12:06:09.750  INFO 10760 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_5
+2020-11-24 12:06:09.764  INFO 10760 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2020-11-24 12:06:09.793  INFO 10760 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7b798f79:0/SimpleConnection@7649b5db [delegate=amqp://guest@127.0.0.1:5672/, localPort= 59022]
+2020-11-24 12:06:10.052  INFO 10760 --- [restartedMain] com.library.LibraryMain                  : Started LibraryMain in 6.115 seconds (JVM running for 6.796)
+2020-11-24 12:06:12.783  INFO 10760 --- [http-nio-8002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 12:06:12.784  INFO 10760 --- [http-nio-8002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-24 12:06:12.796  INFO 10760 --- [http-nio-8002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2020-11-24 12:06:12.913 ERROR 10760 --- [http-nio-8002-exec-1] com.alibaba.druid.pool.DruidDataSource   : testWhileIdle is true, validationQuery not set
+2020-11-24 12:06:12.918  INFO 10760 --- [http-nio-8002-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-11-24 13:11:08.856  INFO 14164 --- [restartedMain] com.library.LibraryMain                  : Starting LibraryMain on PC-32 with PID 14164 (C:\Users\Administrator\IdeaProjects\library1116\library\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\library1116)
+2020-11-24 13:11:08.860  INFO 14164 --- [restartedMain] com.library.LibraryMain                  : The following profiles are active: dev
+2020-11-24 13:11:08.926  INFO 14164 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-24 13:11:08.926  INFO 14164 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-24 13:11:10.132  INFO 14164 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 13:11:10.134  INFO 14164 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-24 13:11:10.174  INFO 14164 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 0 Redis repository interfaces.
+2020-11-24 13:11:10.550  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:10.581  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:10.631  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:10.680  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:10.688  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.library.config.TxAnoConfig$$EnhancerBySpringCGLIB$$6e558719] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:10.698  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:10.704  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:10.705  INFO 14164 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:11:11.168  INFO 14164 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+2020-11-24 13:11:11.180  INFO 14164 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 13:11:11.180  INFO 14164 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-24 13:11:11.295  INFO 14164 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 13:11:11.295  INFO 14164 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2369 ms
+2020-11-24 13:11:13.027  INFO 14164 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-24 13:11:13.117  INFO 14164 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-24 13:11:13.323  INFO 14164 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 13:11:13.363  INFO 14164 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-11-24 13:11:13.838  INFO 14164 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-11-24 13:11:13.964  INFO 14164 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8002 (http) with context path ''
+2020-11-24 13:11:13.965  INFO 14164 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 13:11:13.999  INFO 14164 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 13:11:14.036  INFO 14164 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 13:11:14.263  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: messageDetailUsingGET_1
+2020-11-24 13:11:14.284  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-11-24 13:11:14.288  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-11-24 13:11:14.298  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2020-11-24 13:11:14.310  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2020-11-24 13:11:14.314  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-11-24 13:11:14.316  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-11-24 13:11:14.318  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_1
+2020-11-24 13:11:14.319  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2020-11-24 13:11:14.322  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-11-24 13:11:14.325  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-11-24 13:11:14.327  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2020-11-24 13:11:14.329  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_2
+2020-11-24 13:11:14.335  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAllByConditionUsingGET_1
+2020-11-24 13:11:14.337  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_3
+2020-11-24 13:11:14.339  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-11-24 13:11:14.352  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-11-24 13:11:14.354  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-11-24 13:11:14.364  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2020-11-24 13:11:14.366  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_3
+2020-11-24 13:11:14.368  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_4
+2020-11-24 13:11:14.371  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-11-24 13:11:14.373  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-11-24 13:11:14.379  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2020-11-24 13:11:14.384  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_4
+2020-11-24 13:11:14.386  INFO 14164 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_5
+2020-11-24 13:11:14.401  INFO 14164 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2020-11-24 13:11:14.425  INFO 14164 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#2bdeeb20:0/SimpleConnection@8cf785d [delegate=amqp://guest@127.0.0.1:5672/, localPort= 61996]
+2020-11-24 13:11:14.683  INFO 14164 --- [restartedMain] com.library.LibraryMain                  : Started LibraryMain in 6.374 seconds (JVM running for 7.446)
+2020-11-24 13:13:21.704  INFO 14116 --- [restartedMain] com.library.LibraryMain                  : Starting LibraryMain on PC-32 with PID 14116 (C:\Users\Administrator\IdeaProjects\library1116\library\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\library1116)
+2020-11-24 13:13:21.707  INFO 14116 --- [restartedMain] com.library.LibraryMain                  : The following profiles are active: dev
+2020-11-24 13:13:21.832  INFO 14116 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-24 13:13:21.833  INFO 14116 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-24 13:13:23.074  INFO 14116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 13:13:23.076  INFO 14116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-24 13:13:23.117  INFO 14116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
+2020-11-24 13:13:23.500  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:23.528  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:23.566  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:23.613  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:23.621  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.library.config.TxAnoConfig$$EnhancerBySpringCGLIB$$441d4067] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:23.630  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:23.637  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:23.638  INFO 14116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:13:24.029  INFO 14116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+2020-11-24 13:13:24.038  INFO 14116 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 13:13:24.038  INFO 14116 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-24 13:13:24.137  INFO 14116 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 13:13:24.137  INFO 14116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2304 ms
+2020-11-24 13:13:25.822  INFO 14116 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-24 13:13:25.905  INFO 14116 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-24 13:13:26.097  INFO 14116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 13:13:26.130  INFO 14116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-11-24 13:13:26.595  INFO 14116 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-11-24 13:13:26.717  INFO 14116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8002 (http) with context path ''
+2020-11-24 13:13:26.719  INFO 14116 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 13:13:26.736  INFO 14116 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 13:13:26.769  INFO 14116 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 13:13:26.974  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: messageDetailUsingGET_1
+2020-11-24 13:13:26.996  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-11-24 13:13:27.000  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-11-24 13:13:27.011  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2020-11-24 13:13:27.025  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2020-11-24 13:13:27.029  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-11-24 13:13:27.032  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-11-24 13:13:27.033  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_1
+2020-11-24 13:13:27.035  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2020-11-24 13:13:27.038  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-11-24 13:13:27.042  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-11-24 13:13:27.043  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2020-11-24 13:13:27.045  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_2
+2020-11-24 13:13:27.052  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAllByConditionUsingGET_1
+2020-11-24 13:13:27.053  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_3
+2020-11-24 13:13:27.056  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-11-24 13:13:27.067  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-11-24 13:13:27.069  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-11-24 13:13:27.076  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2020-11-24 13:13:27.078  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_3
+2020-11-24 13:13:27.080  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_4
+2020-11-24 13:13:27.083  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-11-24 13:13:27.085  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-11-24 13:13:27.090  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2020-11-24 13:13:27.095  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_4
+2020-11-24 13:13:27.097  INFO 14116 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_5
+2020-11-24 13:13:27.108  INFO 14116 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2020-11-24 13:13:27.156  INFO 14116 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7150a7c9:0/SimpleConnection@2ed92861 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 62102]
+2020-11-24 13:13:27.398  INFO 14116 --- [restartedMain] com.library.LibraryMain                  : Started LibraryMain in 6.288 seconds (JVM running for 6.978)
+2020-11-24 13:14:00.034 ERROR 14116 --- [scheduling-1] com.alibaba.druid.pool.DruidDataSource   : testWhileIdle is true, validationQuery not set
+2020-11-24 13:14:00.040  INFO 14116 --- [scheduling-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-11-24 13:15:30.032  INFO 11840 --- [restartedMain] com.library.LibraryMain                  : Starting LibraryMain on PC-32 with PID 11840 (C:\Users\Administrator\IdeaProjects\library1116\library\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\library1116)
+2020-11-24 13:15:30.034  INFO 11840 --- [restartedMain] com.library.LibraryMain                  : The following profiles are active: dev
+2020-11-24 13:15:30.085  INFO 11840 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-24 13:15:30.085  INFO 11840 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-24 13:15:31.278  INFO 11840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 13:15:31.281  INFO 11840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-24 13:15:31.323  INFO 11840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
+2020-11-24 13:15:31.709  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:31.739  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:31.777  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:31.826  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:31.833  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.library.config.TxAnoConfig$$EnhancerBySpringCGLIB$$5822688] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:31.842  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:31.849  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:31.849  INFO 11840 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:15:32.224  INFO 11840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+2020-11-24 13:15:32.233  INFO 11840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 13:15:32.234  INFO 11840 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-24 13:15:32.339  INFO 11840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 13:15:32.340  INFO 11840 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2254 ms
+2020-11-24 13:15:33.968  INFO 11840 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-24 13:15:34.056  INFO 11840 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-24 13:15:34.248  INFO 11840 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 13:15:34.281  INFO 11840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-11-24 13:15:34.732  INFO 11840 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-11-24 13:15:34.867  INFO 11840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8002 (http) with context path ''
+2020-11-24 13:15:34.869  INFO 11840 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 13:15:34.886  INFO 11840 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 13:15:34.920  INFO 11840 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 13:15:35.127  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: messageDetailUsingGET_1
+2020-11-24 13:15:35.147  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-11-24 13:15:35.151  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-11-24 13:15:35.159  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2020-11-24 13:15:35.172  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2020-11-24 13:15:35.176  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-11-24 13:15:35.178  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-11-24 13:15:35.180  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_1
+2020-11-24 13:15:35.181  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2020-11-24 13:15:35.183  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-11-24 13:15:35.187  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-11-24 13:15:35.188  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2020-11-24 13:15:35.190  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_2
+2020-11-24 13:15:35.196  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAllByConditionUsingGET_1
+2020-11-24 13:15:35.198  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_3
+2020-11-24 13:15:35.200  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-11-24 13:15:35.211  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-11-24 13:15:35.214  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-11-24 13:15:35.221  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2020-11-24 13:15:35.223  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_3
+2020-11-24 13:15:35.225  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_4
+2020-11-24 13:15:35.228  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-11-24 13:15:35.230  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-11-24 13:15:35.236  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2020-11-24 13:15:35.241  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_4
+2020-11-24 13:15:35.243  INFO 11840 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_5
+2020-11-24 13:15:35.254  INFO 11840 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2020-11-24 13:15:35.280  INFO 11840 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#c6b368d:0/SimpleConnection@6e0e5e8 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 62212]
+2020-11-24 13:15:35.527  INFO 11840 --- [restartedMain] com.library.LibraryMain                  : Started LibraryMain in 6.232 seconds (JVM running for 7.026)
+2020-11-24 13:16:00.659  INFO 10432 --- [restartedMain] com.library.LibraryMain                  : Starting LibraryMain on PC-32 with PID 10432 (C:\Users\Administrator\IdeaProjects\library1116\library\target\classes started by Administrator in C:\Users\Administrator\IdeaProjects\library1116)
+2020-11-24 13:16:00.662  INFO 10432 --- [restartedMain] com.library.LibraryMain                  : The following profiles are active: dev
+2020-11-24 13:16:00.722  INFO 10432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-24 13:16:00.722  INFO 10432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-24 13:16:01.889  INFO 10432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 13:16:01.891  INFO 10432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-24 13:16:01.933  INFO 10432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
+2020-11-24 13:16:02.310  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.340  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.378  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.425  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.433  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.library.config.TxAnoConfig$$EnhancerBySpringCGLIB$$8bd6cb58] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.442  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.449  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.450  INFO 10432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 13:16:02.827  INFO 10432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+2020-11-24 13:16:02.837  INFO 10432 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 13:16:02.837  INFO 10432 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-24 13:16:02.945  INFO 10432 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 13:16:02.945  INFO 10432 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2223 ms
+2020-11-24 13:16:04.542  INFO 10432 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-24 13:16:04.635  INFO 10432 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-24 13:16:04.826  INFO 10432 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 13:16:04.857  INFO 10432 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-11-24 13:16:05.318  INFO 10432 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-11-24 13:16:05.439  INFO 10432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8002 (http) with context path ''
+2020-11-24 13:16:05.441  INFO 10432 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 13:16:05.458  INFO 10432 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 13:16:05.490  INFO 10432 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 13:16:05.693  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: messageDetailUsingGET_1
+2020-11-24 13:16:05.711  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-11-24 13:16:05.715  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-11-24 13:16:05.725  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2020-11-24 13:16:05.737  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2020-11-24 13:16:05.741  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-11-24 13:16:05.743  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-11-24 13:16:05.745  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_1
+2020-11-24 13:16:05.746  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2020-11-24 13:16:05.748  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-11-24 13:16:05.751  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-11-24 13:16:05.753  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2020-11-24 13:16:05.754  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_2
+2020-11-24 13:16:05.760  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAllByConditionUsingGET_1
+2020-11-24 13:16:05.761  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_3
+2020-11-24 13:16:05.764  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-11-24 13:16:05.777  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-11-24 13:16:05.780  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-11-24 13:16:05.809  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2020-11-24 13:16:05.811  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_3
+2020-11-24 13:16:05.813  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_4
+2020-11-24 13:16:05.816  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-11-24 13:16:05.818  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-11-24 13:16:05.823  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2020-11-24 13:16:05.828  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectUsingGET_4
+2020-11-24 13:16:05.829  INFO 10432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_5
+2020-11-24 13:16:05.839  INFO 10432 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2020-11-24 13:16:05.862  INFO 10432 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#3bb09d47:0/SimpleConnection@757b15e5 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 62253]
+2020-11-24 13:16:06.120  INFO 10432 --- [restartedMain] com.library.LibraryMain                  : Started LibraryMain in 6.012 seconds (JVM running for 6.708)
+2020-11-24 13:17:00.032 ERROR 10432 --- [scheduling-1] com.alibaba.druid.pool.DruidDataSource   : testWhileIdle is true, validationQuery not set
+2020-11-24 13:17:00.037  INFO 10432 --- [scheduling-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited

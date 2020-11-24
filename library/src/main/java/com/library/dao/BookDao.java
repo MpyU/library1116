@@ -17,4 +17,10 @@ public interface BookDao extends BaseDao<Book> {
     int bookUp(Integer bookId);
 
     int bookDown(Integer bookId);
+    //点击量加1
+   int hitsAdd(Integer id);
+//把月点击量设置为0
+    int monthClickToZero();
+//把日点击量设置为0
+    int dayClickToZero();
 }

@@ -40,6 +40,9 @@ public class BookController {
 	@GetMapping("/get")
 	public Result<Book> get(Book b) {
 		Book book = bookService.get(b);
+		if(book!=null&&book.getId()!=null){
+			bookService.hitsAdd(book.getId());
+		}
 		if (book != null) {
 			return new Result(ResultCode.SUCCESS, "查询图书信息成功！", book);
 		}

@@ -189,6 +189,22 @@
         set book_count=book_count-#{num}
         where id=#{bookId}
     </update>
+    <!--点击量+1-->
+<update id="hitsAdd">
+    update book
+    set day_click_count=day_click_count+1,month_click_count=month_click_count+1,total_click_count=total_click_count+1
+     where id=#{id}
+</update>
+<!--把点击量设置为0-->
+    <update id="dayClickToZero">
+        update book
+        set day_click_count=0
+    </update>
+    <!--把点击量设置为0-->
+    <update id="monthClickToZero">
+     update book
+     set month_click_count=0
+    </update>
 
 <!--
     void bookDown(Integer bookId);

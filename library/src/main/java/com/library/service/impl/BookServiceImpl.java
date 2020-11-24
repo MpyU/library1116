@@ -117,4 +117,19 @@ public class BookServiceImpl implements BookService {
 		return bookDao.bookDown(bookId);
 	}
 
+	@Override
+	public int hitsAdd(Integer id) {
+		return bookDao.hitsAdd(id);
+	}
+
+	@Override
+	public int monthClickToZero() {
+		return bookDao.monthClickToZero();
+	}
+
+	@Override
+	public int dayClickToZero() {
+		return bookDao.dayClickToZero();
+	}
+
 }

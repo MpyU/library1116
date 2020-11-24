@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -73,11 +71,11 @@ public class AdminSummaryController {
 		return new Result<PageInfo<SummaryResult>>(ResultCode.FAIL, "统计失败");
 	}
 
-	@ExceptionHandler(Exception.class)
-	public Object handleException(Exception e, HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("进入自定义异常处理方法");
-		return response;
-
-	}
+//	@ExceptionHandler(Exception.class)
+//	public Object handleException(Exception e, HttpServletRequest request, HttpServletResponse response) {
+//		System.out.println("进入自定义异常处理方法");
+//		return response;
+//
+//	}
 
 }
